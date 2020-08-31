@@ -1,17 +1,19 @@
 import React from "react";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "../../theme/GlobalStyle";
+import theme from "../../theme/theme";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Home } from "../Home/Home";
 import { Form } from "../Form/Form";
 import { Login } from "../Login/Login";
 import { Logout } from "../Logout/Logout";
 import { Register } from "../Register/Register";
-import { Tabs } from "../../components/Tabs/Tabs";
 
 const Root = () => {
   return (
-    <BrowserRouter>
-      <>
-        <Tabs />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/oddaj-rzeczy" component={Form} />
@@ -19,8 +21,8 @@ const Root = () => {
           <Route path="/rejestracja" component={Register} />
           <Route path="/wylogowano" component={Logout} />
         </Switch>
-      </>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
 
