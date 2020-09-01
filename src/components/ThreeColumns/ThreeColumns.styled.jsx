@@ -20,7 +20,7 @@ export const Column = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 334px;
+  max-width: 334px;
   height: 252px;
   margin: 46px 0 86px 0;
 

@@ -30,14 +30,20 @@ export const ButtonsWrap = styled.div`
 
 export const Button = styled.button`
   text-align: center;
-  font-size: 28px;
+  font-size: 38px;
+  line-height: 45px;
   font-weight: 300;
-  width: 310px;
+  max-width: 310px;
+  padding: 0 10px;
   height: 120px;
   background-color: transparent;
   border: 0.75px solid ${({ theme }) => theme.colors.fontColor};
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.fontColor};
   outline: none;
+  transition: 0.2s;
   cursor: pointer;
+  :hover {
+    border: 0.75px solid ${({ theme }) => theme.colors.loginBorder};
+  }
 `;
