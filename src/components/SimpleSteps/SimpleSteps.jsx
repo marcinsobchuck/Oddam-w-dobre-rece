@@ -15,7 +15,7 @@ import icon4 from "../../assets/icons/Icon-4.svg";
 
 export const SimpleSteps = () => {
   return (
-    <SimpleStepsContainer>
+    <SimpleStepsContainer id="simple_Steps">
       <Title>
         <h1>Wystarczą 4 proste kroki</h1>
         <img src={decoration} alt="decoration" />

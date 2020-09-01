@@ -2,8 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap');
 
 * {
   margin: 0;
@@ -15,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  font-family: ${({ theme }) => theme.fonts.fontBase}
+  font-family: ${({ theme }) => theme.fonts.fontBase}, sans-serif;
 }
 
 `;

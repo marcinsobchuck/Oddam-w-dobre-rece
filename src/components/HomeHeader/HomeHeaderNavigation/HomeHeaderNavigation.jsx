@@ -28,7 +28,9 @@ export const HomeHeaderNavigation = () => {
             <a href="#">Start</a>
           </ListItem>
           <ListItem menuListItem>
-            <a href="#">O co chodzi?</a>
+            <LinkScroll to="simple_Steps" smooth duration={1000}>
+              O co chodzi?
+            </LinkScroll>
           </ListItem>
           <ListItem menuListItem>
             <a href="#">O nas</a>

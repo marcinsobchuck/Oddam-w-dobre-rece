@@ -34,10 +34,11 @@ export const Button = styled.button`
   line-height: 45px;
   font-weight: 300;
   max-width: 310px;
-  padding: 0 10px;
+  padding: 0 30px;
   height: 120px;
   background-color: transparent;
   border: 0.75px solid ${({ theme }) => theme.colors.fontColor};
+  font-family: ${({ theme }) => theme.fonts.fontBase}, sans-serif;
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.fontColor};
   outline: none;

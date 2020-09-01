@@ -7,7 +7,7 @@ export default {
     fontColor: "#3c3c3c",
   },
   fonts: {
-    fontBase: "Open Sans, sans-serif",
-    fontAlt: "Merriweather, serif",
+    fontBase: "Open Sans",
+    fontAlt: "Montserrat",
   },
 };
