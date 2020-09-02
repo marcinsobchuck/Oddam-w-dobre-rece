@@ -7,7 +7,7 @@ import { AboutUsContainer, InfoBox, Image } from "./AboutUs.styled";
 
 export const AboutUs = () => {
   return (
-    <AboutUsContainer>
+    <AboutUsContainer id="about_Us">
       <InfoBox>
         <div>
           <h1>O nas</h1>

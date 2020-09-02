@@ -11,7 +11,8 @@ import decoration from "../../../assets/icons/Decoration.svg";
 export const HomeHeaderMain = () => {
   return (
     <MainContainer>
-      <Title>Zacznij pomagać! Oddaj niechciane rzeczy w zaufane ręce</Title>
+      <Title>Zacznij pomagać! </Title>
+      <Title>Oddaj niechciane rzeczy w zaufane ręce</Title>
       <img src={decoration} alt="decoration" />
       <ButtonsWrap>
         <Link to="/oddaj-rzeczy">

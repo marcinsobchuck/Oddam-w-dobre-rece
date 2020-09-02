@@ -33,7 +33,9 @@ export const HomeHeaderNavigation = () => {
             </LinkScroll>
           </ListItem>
           <ListItem menuListItem>
-            <a href="#">O nas</a>
+            <LinkScroll to="about_Us" smooth duration={1000}>
+              O nas
+            </LinkScroll>
           </ListItem>
           <ListItem menuListItem>
             <a href="#">Fundacja i organizacje</a>

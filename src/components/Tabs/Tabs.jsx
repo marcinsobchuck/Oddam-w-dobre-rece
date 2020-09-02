@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-const TARGETS = {
+export const TARGETS = {
   loggedIn: "loggedIn",
+  foundations: "foundations",
   organisations: "organisations",
   local: "local",
 };

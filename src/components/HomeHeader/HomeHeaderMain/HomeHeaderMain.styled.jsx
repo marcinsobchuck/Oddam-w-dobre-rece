@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -10,6 +10,9 @@ export const MainContainer = styled.div`
   width: 100%;
   align-self: flex-start;
   margin-left: 40px;
+  img {
+    margin-top: 25px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -17,7 +20,7 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.fontColor};
   text-align: center;
   letter-spacing: -0.76px;
-  margin-bottom: 25px;
+
   font-weight: 400;
 `;
 
@@ -29,14 +32,12 @@ export const ButtonsWrap = styled.div`
 `;
 
 export const Button = styled.button`
-  text-align: center;
   font-size: 38px;
-  line-height: 45px;
   font-weight: 300;
   max-width: 310px;
-  padding: 0 30px;
-  height: 120px;
   background-color: transparent;
+  padding: 10px 30px;
+  line-height: 45px;
   border: 0.75px solid ${({ theme }) => theme.colors.fontColor};
   font-family: ${({ theme }) => theme.fonts.fontBase}, sans-serif;
   text-transform: uppercase;
@@ -47,4 +48,30 @@ export const Button = styled.button`
   :hover {
     border: 0.75px solid ${({ theme }) => theme.colors.loginBorder};
   }
+
+  ${({ helpBtn }) =>
+    helpBtn &&
+    css`
+      font-size: 24px;
+      font-weight: 400;
+      border: 0.75px solid transparent;
+      text-transform: none;
+      line-height: 24px;
+      padding: 10px 30px;
+
+      text-align: center;
+      :hover {
+        border: 0.75px solid ${({ theme }) => theme.colors.loginBorder};
+      }
+    `}
+  ${({ center }) =>
+    center &&
+    css`
+      margin: 0 60px;
+    `}
+    ${({ active }) =>
+    active &&
+    css`
+      border: 0.75px solid ${({ theme }) => theme.colors.fontColor};
+    `}
 `;

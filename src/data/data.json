@@ -1,0 +1,127 @@
+{
+  "foundations": {
+    "desc": "W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.",
+    "organisations": [
+      {
+        "id": 1,
+        "name": "Fundacja “Dbam o Zdrowie”",
+        "orgDesc": "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+        "things": "ubrania, jedzenie, sprzęt AGD, meble, zabawki"
+      },
+      {
+        "id": 2,
+        "name": "Fundacja “Dla dzieci”",
+        "orgDesc": "Cel i misja: Pomoc dzieciom z ubogich rodzin.",
+        "things": "ubrania, meble, zabawki"
+      },
+      {
+        "id": 3,
+        "name": "Fundacja “Bez domu”",
+        "orgDesc": "Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 4,
+        "name": "Fundacja “Dbam o Zdrowie”4",
+        "orgDesc": "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 5,
+        "name": "Fundacja “Dbam o Zdrowie”5",
+        "orgDesc": "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 6,
+        "name": "Fundacja “Dbam o Zdrowie”6",
+        "orgDesc": "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 7,
+        "name": "Fundacja “Dbam o Zdrowie”7",
+        "orgDesc": "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 8,
+        "name": "Fundacja “Dbam o Zdrowie”8",
+        "orgDesc": "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 9,
+        "name": "Fundacja “Dbam o Zdrowie”9",
+        "orgDesc": "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      }
+    ]
+  },
+
+  "organisations": {
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+    "organisations": [
+      {
+        "id": 1,
+        "name": "Organizacja “Lorem Ipsum 1”",
+        "orgDesc": "Quis varius quam quisque id diam vel quam elementum pulvinar.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 2,
+        "name": "Organizacja “Lorem Ipsum 2”",
+        "orgDesc": "Quis varius quam quisque id diam vel quam elementum pulvinar.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 3,
+        "name": "Organizacja “Lorem Ipsum 3”",
+        "orgDesc": "Quis varius quam quisque id diam vel quam elementum pulvinar.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 4,
+        "name": "Organizacja “Lorem Ipsum 4”",
+        "orgDesc": "Quis varius quam quisque id diam vel quam elementum pulvinar.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 5,
+        "name": "Organizacja “Lorem Ipsum 5”",
+        "orgDesc": "Quis varius quam quisque id diam vel quam elementum pulvinar.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 6,
+        "name": "Organizacja “Lorem Ipsum 6”",
+        "orgDesc": "Quis varius quam quisque id diam vel quam elementum pulvinar.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      }
+    ]
+  },
+
+  "local": {
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+    "organisations": [
+      {
+        "id": 1,
+        "name": "Lokalna zbiórka “Lorem Ipsum 1”",
+        "orgDesc": "Quis varius quam quisque id diam vel quam elementum pulvinar.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 2,
+        "name": "Lokalna zbiórka “Lorem Ipsum 2”",
+        "orgDesc": "Quis varius quam quisque id diam vel quam elementum pulvinar.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      },
+      {
+        "id": 3,
+        "name": "Lokalna zbiórka “Lorem Ipsum 3”",
+        "orgDesc": "Quis varius quam quisque id diam vel quam elementum pulvinar.",
+        "things": "ubrania, jedzenie, ciepłe koce"
+      }
+    ]
+  }
+}

@@ -3,6 +3,7 @@ import { HomeHeader } from "../../components/HomeHeader/HomeHeader";
 import { ThreeColumns } from "../../components/ThreeColumns/ThreeColumns";
 import { SimpleSteps } from "../../components/SimpleSteps/SimpleSteps";
 import { AboutUs } from "../../components/AboutUs/AboutUs";
+import { Help } from "../../components/Help/Help";
 
 export const Home = () => {
   return (
@@ -11,6 +12,7 @@ export const Home = () => {
       <ThreeColumns />
       <SimpleSteps />
       <AboutUs />
+      <Help />
     </>
   );
 };

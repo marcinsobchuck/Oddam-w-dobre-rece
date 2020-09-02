@@ -40,6 +40,7 @@ export const InfoBox = styled.div`
   }
 
   img[alt="signature"] {
+    margin-top: 40px;
     align-self: flex-end;
   }
 `;
