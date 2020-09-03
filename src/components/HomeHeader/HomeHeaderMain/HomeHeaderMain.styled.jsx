@@ -69,7 +69,7 @@ export const Button = styled.button`
     css`
       margin: 0 60px;
     `}
-    ${({ active }) =>
+  ${({ active }) =>
     active &&
     css`
       border: 0.75px solid ${({ theme }) => theme.colors.fontColor};

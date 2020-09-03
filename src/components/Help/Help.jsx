@@ -44,49 +44,31 @@ export const Help = () => {
         <h1>Komu pomagamy?</h1>
         <img src={decoration} alt="decoration" />
         <ButtonContainer>
-          {activeTab === TARGETS.foundations ? (
-            <Button
-              active
-              onClick={() => handleClick(TARGETS.foundations)}
-              helpBtn
-            >
-              Fundacjom
-            </Button>
-          ) : (
-            <Button onClick={() => handleClick(TARGETS.foundations)} helpBtn>
-              Fundacjom
-            </Button>
-          )}
-          {activeTab === TARGETS.organisations ? (
-            <Button
-              active
-              onClick={() => handleClick(TARGETS.organisations)}
-              helpBtn
-              center
-            >
-              Organizacjom pozarządowym
-            </Button>
-          ) : (
-            <Button
-              onClick={() => handleClick(TARGETS.organisations)}
-              helpBtn
-              center
-            >
-              Organizacjom pozarządowym
-            </Button>
-          )}
-          {activeTab === TARGETS.local ? (
-            <Button active onClick={() => handleClick(TARGETS.local)} helpBtn>
-              Lokalnym zbiórkom
-            </Button>
-          ) : (
-            <Button onClick={() => handleClick(TARGETS.local)} helpBtn>
-              Lokalnym zbiórkom
-            </Button>
-          )}
+          <Button
+            active={activeTab === TARGETS.foundations}
+            onClick={() => handleClick(TARGETS.foundations)}
+            helpBtn
+          >
+            Fundacjom
+          </Button>
+          <Button
+            active={activeTab === TARGETS.organisations}
+            onClick={() => handleClick(TARGETS.organisations)}
+            helpBtn
+            center
+          >
+            Organizacjom pozarządowym
+          </Button>
+          <Button
+            active={activeTab === TARGETS.local}
+            onClick={() => handleClick(TARGETS.local)}
+            helpBtn
+          >
+            Lokalnym zbiórkom
+          </Button>
         </ButtonContainer>
       </HelpInfoContainer>
-      <HelpTargetContainer> {renderContent()}</HelpTargetContainer>
+      <HelpTargetContainer>{renderContent()}</HelpTargetContainer>
     </Wrapper>
   );
 };
