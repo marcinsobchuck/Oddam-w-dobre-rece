@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   align-items: center;
   height: 100vh;
   max-width: 1300px;
-  margin: 0 auto;
+  margin: 0 auto 80px auto;
 `;
 
 export const HelpInfoContainer = styled.div`
