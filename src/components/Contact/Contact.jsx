@@ -6,12 +6,13 @@ import { ContactForm } from "./ContactForm/ContactForm";
 export const Contact = () => {
   return (
     <div style={{ position: "relative" }}>
-      <Background></Background>
-      <FormContainer>
-        <h1>Skontaktuj się z nami</h1>
-        <img src={decoration} alt="decoration" />
-        <ContactForm />
-      </FormContainer>
+      <Background>
+        <FormContainer>
+          <h1>Skontaktuj się z nami</h1>
+          <img src={decoration} alt="decoration" />
+          <ContactForm />
+        </FormContainer>
+      </Background>
     </div>
   );
 };

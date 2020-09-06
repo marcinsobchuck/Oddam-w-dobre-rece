@@ -13,7 +13,7 @@ export const Background = styled.div`
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.79);
     z-index: 2;
   }
 `;
@@ -22,10 +22,11 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  right: 400px;
-  top: 25%;
-  color: black;
+  right: 8%;
+  top: 15%;
   z-index: 55;
+  max-width: 550px;
+
   h1 {
     font-size: 38px;
     color: ${({ theme }) => theme.colors.fontColor};

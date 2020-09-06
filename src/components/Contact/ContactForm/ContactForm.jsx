@@ -10,7 +10,7 @@ const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Imię musi zawierać minimum dwa znaki")
     .max(15, "Maksimum 22 znaki")
-    .required("Musisz podać swoję imię")
+    .required("Musisz podać swoje imię")
     .matches(/^[a-zA-Z]*$/, "Podaj tylko swoje imię"),
 
   email: Yup.string()
@@ -43,7 +43,7 @@ export const ContactForm = () => {
             .then(
               setTimeout(() => {
                 setIsSuccess(false);
-              }, 5000)
+              }, 6000)
             );
 
           resetForm();
@@ -61,35 +61,41 @@ export const ContactForm = () => {
         isSubmitting,
       }) => (
         <Form onSubmit={handleSubmit}>
-          {isSuccess && <div>Gitówa</div>}
+          {isSuccess && (
+            <div className="success">
+              <p>Wiadomość została wysłana! Wkrótce się skontaktujemy</p>
+            </div>
+          )}
           {isSubmitting && <LinearProgress />}
-          <div>
-            <label htmlFor="name">Wpisz swoje imię</label>
-            <Input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Imię"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.name}
-              error={touched.name && errors.name}
-            />
-            <Error message={errors.name} />
-          </div>
-          <div>
-            <label htmlFor="email">Wpisz swój e-mail</label>
-            <Input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="E-mail"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-              error={touched.email && errors.email}
-            />
-            <Error message={errors.email} />
+          <div className="inputs_row">
+            <div className="margin_right">
+              <label htmlFor="name">Wpisz swoje imię</label>
+              <Input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Imię"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+                error={touched.name && errors.name}
+              />
+              <Error touched={touched.name} message={errors.name} />
+            </div>
+            <div>
+              <label htmlFor="email">Wpisz swój e-mail</label>
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="E-mail"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                error={touched.email && errors.email}
+              />
+              <Error touched={touched.email} message={errors.email} />
+            </div>
           </div>
           <div>
             <label htmlFor="message">Wpisz swoją wiadomość</label>
@@ -102,9 +108,9 @@ export const ContactForm = () => {
               value={values.message}
               error={touched.message && errors.message}
             ></Textarea>
-            <Error message={errors.message} />
+            <Error touched={touched.message} message={errors.message} />
           </div>
-          <div>
+          <div className="button">
             <button type="submit" disabled={isSubmitting}>
               Wyślij
             </button>
