@@ -25,7 +25,7 @@ export const HomeHeaderNavigation = () => {
       <Navigation menu>
         <List>
           <ListItem menuListItem>
-            <Link to="/logowanie">Start</Link>
+            <Link to="/">Start</Link>
           </ListItem>
           <ListItem menuListItem>
             <LinkScroll to="simple_Steps" smooth duration={1000} offset={-120}>

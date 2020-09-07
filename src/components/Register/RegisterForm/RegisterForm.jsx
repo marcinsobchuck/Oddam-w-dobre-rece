@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Error } from "../../Contact/ContactForm/Error";
-import { Form, InputBox, ButtonsWrapper, Button } from "./LoginForm.styled";
+import { Form, InputBox, ButtonsWrapper, Button } from "./RegisterForm.styled";
 import { Input } from "../../Contact/ContactForm/ContactForm.styled";
 
 const validationSchema = Yup.object().shape({
@@ -14,15 +14,20 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, "Hasło składa się z minimum 6 znaków!")
     .required("Musisz podać hasło"),
+  passwordConfirmation: Yup.string().oneOf(
+    [Yup.ref("password"), null],
+    "Hasła muszą być identyczne!"
+  ),
 });
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
   return (
     <>
       <Formik
         initialValues={{
           email: "",
           password: "",
+          passwordConfirmation: "",
         }}
         validationSchema={validationSchema}
       >
@@ -54,15 +59,33 @@ export const LoginForm = () => {
               />
               <Error touched={touched.password} message={errors.password} />
             </InputBox>
+            <InputBox>
+              <label htmlFor="passwordConfirmation">Powtóz hasło</label>
+              <Input
+                type="password"
+                name="passwordConfirmation"
+                id="passwordConfirmation"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.passwordConfirmation}
+                error={
+                  touched.passwordConfirmation && errors.passwordConfirmation
+                }
+              />
+              <Error
+                touched={touched.passwordConfirmation}
+                message={errors.passwordConfirmation}
+              />
+            </InputBox>
           </Form>
         )}
       </Formik>
       <ButtonsWrapper>
-        <Link to="/rejestracja">
-          <Button>Załóż konto</Button>
+        <Link to="/logowanie">
+          <Button>Zaloguj się</Button>
         </Link>
-        <Link to="/">
-          <Button login>Zaloguj się</Button>
+        <Link to="/rejestracja">
+          <Button register>Załóż konto</Button>
         </Link>
       </ButtonsWrapper>
     </>

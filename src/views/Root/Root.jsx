@@ -6,8 +6,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Home } from "../Home/Home";
 import { Form } from "../Form/Form";
 import { LoginView } from "../LoginView/LoginView";
-import { Logout } from "../Logout/Logout";
-import { Register } from "../Register/Register";
+import { LogoutView } from "../LogoutView/LogoutView";
+import { RegisterView } from "../RegisterView/RegisterView";
 
 const Root = () => {
   return (
@@ -18,8 +18,8 @@ const Root = () => {
           <Route exact path="/" component={Home} />
           <Route path="/oddaj-rzeczy" component={Form} />
           <Route path="/logowanie" component={LoginView} />
-          <Route path="/rejestracja" component={Register} />
-          <Route path="/wylogowano" component={Logout} />
+          <Route path="/rejestracja" component={RegisterView} />
+          <Route path="/wylogowano" component={LogoutView} />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>

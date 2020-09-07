@@ -16,6 +16,4 @@ export const Title = styled.h1`
   letter-spacing: -0.8px;
   font-weight: 400;
   margin-bottom: 26px;
-  max-width: 420px;
-  text-align: center;
 `;

@@ -29,10 +29,10 @@ export const Button = styled.button`
   font-weight: 300;
   background-color: transparent;
   outline: none;
-  border: 0.75px solid ${({ login }) => (login ? "#3C3C3C" : "transparent")};
+  border: 0.75px solid
+    ${({ register }) => (register ? "#3C3C3C" : "transparent")};
   cursor: pointer;
   transition: 0.2s;
-  margin-top: ${({ logout }) => (logout ? "35px" : "0")};
   :hover {
     border: 0.75px solid ${({ theme }) => theme.colors.loginBorder};
   }
