@@ -17,6 +17,7 @@ export const Navigation = styled.nav`
 
 export const List = styled.ul`
   display: flex;
+  align-items: center;
 `;
 
 export const ListItem = styled.li`
@@ -50,4 +51,8 @@ export const ListItem = styled.li`
         }
       }
     `}
+`;
+
+export const Welcome = styled.p`
+  font-size: 14px;
 `;

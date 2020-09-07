@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Link } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
@@ -7,21 +7,42 @@ import {
   Navigation,
   List,
   ListItem,
+  Welcome,
 } from "./HomeHeaderNavigation.styled";
+import MyContext from "../../../context";
 
 export const HomeHeaderNavigation = () => {
+  const { isLoggedIn, setIsLoggedIn } = useContext(MyContext);
+
   return (
     <NavigationWrapper>
-      <Navigation>
-        <List>
-          <ListItem>
-            <Link to="/logowanie">Zaloguj</Link>
-          </ListItem>
-          <ListItem yellowBorder>
-            <Link to="/rejestracja">Załóż konto</Link>
-          </ListItem>
-        </List>
-      </Navigation>
+      {isLoggedIn ? (
+        <Navigation>
+          <List>
+            <Welcome>Cześć krzysztof@gmail.com</Welcome>
+            <ListItem yellowBorder>
+              <Link to="/oddaj-rzeczy">Oddaj rzeczy</Link>
+            </ListItem>
+            <ListItem>
+              <Link onClick={() => setIsLoggedIn(false)} to="/wylogowano">
+                Wyloguj
+              </Link>
+            </ListItem>
+          </List>
+        </Navigation>
+      ) : (
+        <Navigation>
+          <List>
+            <ListItem>
+              <Link to="/logowanie">Zaloguj</Link>
+            </ListItem>
+            <ListItem yellowBorder>
+              <Link to="/rejestracja">Załóż konto</Link>
+            </ListItem>
+          </List>
+        </Navigation>
+      )}
+
       <Navigation menu>
         <List>
           <ListItem menuListItem>
