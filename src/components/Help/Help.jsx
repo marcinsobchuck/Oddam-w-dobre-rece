@@ -39,7 +39,7 @@ export const Help = () => {
     }
   };
   return (
-    <Wrapper>
+    <Wrapper id="help">
       <HelpInfoContainer>
         <h1>Komu pomagamy?</h1>
         <img src={decoration} alt="decoration" />

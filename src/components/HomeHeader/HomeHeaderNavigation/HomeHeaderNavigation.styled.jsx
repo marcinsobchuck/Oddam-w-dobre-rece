@@ -26,6 +26,7 @@ export const ListItem = styled.li`
     padding: 10px;
     font-size: 13px;
     color: #737373;
+    cursor: pointer;
   }
   ${({ yellowBorder }) =>
     yellowBorder &&

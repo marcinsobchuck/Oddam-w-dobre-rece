@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Input = styled.input`
   outline: none;
   background-color: transparent;
   font-size: 16px;
   border: none;
-  border-bottom: 2px solid ${({ error }) => (error ? "red" : "grey")};
+  border-bottom: 2px solid ${({ error }) => (error ? "red" : "#818181")};
   width: 100%;
   padding: 10px 0px;
   ::placeholder {
@@ -24,7 +24,7 @@ export const Textarea = styled.textarea`
   outline: none;
   height: 100px;
   border: none;
-  border-bottom: 1px solid ${({ error }) => (error ? "red" : "grey")};
+  border-bottom: 1px solid ${({ error }) => (error ? "red" : "#818181")};
   ::placeholder {
     font-size: 18px;
     color: #3c3c3c26;

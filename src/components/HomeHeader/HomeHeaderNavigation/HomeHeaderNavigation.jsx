@@ -25,10 +25,10 @@ export const HomeHeaderNavigation = () => {
       <Navigation menu>
         <List>
           <ListItem menuListItem>
-            <a href="#">Start</a>
+            <Link to="/logowanie">Start</Link>
           </ListItem>
           <ListItem menuListItem>
-            <LinkScroll to="simple_Steps" smooth duration={1000}>
+            <LinkScroll to="simple_Steps" smooth duration={1000} offset={-120}>
               O co chodzi?
             </LinkScroll>
           </ListItem>
@@ -38,10 +38,14 @@ export const HomeHeaderNavigation = () => {
             </LinkScroll>
           </ListItem>
           <ListItem menuListItem>
-            <a href="#">Fundacja i organizacje</a>
+            <LinkScroll to="help" smooth duration={1000} offset={70}>
+              Fundacja i organizacje
+            </LinkScroll>
           </ListItem>
           <ListItem menuListItem>
-            <a href="#">Kontakt</a>
+            <LinkScroll to="contact" smooth duration={1000}>
+              Kontakt
+            </LinkScroll>
           </ListItem>
         </List>
       </Navigation>

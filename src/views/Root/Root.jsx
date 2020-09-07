@@ -5,7 +5,7 @@ import theme from "../../theme/theme";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Home } from "../Home/Home";
 import { Form } from "../Form/Form";
-import { Login } from "../Login/Login";
+import { LoginView } from "../LoginView/LoginView";
 import { Logout } from "../Logout/Logout";
 import { Register } from "../Register/Register";
 
@@ -17,7 +17,7 @@ const Root = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/oddaj-rzeczy" component={Form} />
-          <Route path="/logowanie" component={Login} />
+          <Route path="/logowanie" component={LoginView} />
           <Route path="/rejestracja" component={Register} />
           <Route path="/wylogowano" component={Logout} />
         </Switch>

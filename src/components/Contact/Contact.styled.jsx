@@ -5,6 +5,8 @@ export const Background = styled.div`
   height: 100vh;
   width: 100%;
   background-image: url(${background});
+  background-position-y: -40px;
+
   :before {
     content: "";
     display: block;
@@ -37,5 +39,28 @@ export const FormContainer = styled.div`
   }
   img {
     margin-bottom: 70px;
+  }
+`;
+
+export const Footer = styled.footer`
+  position: absolute;
+  z-index: 2000;
+  display: flex;
+  bottom: 6px;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+
+  p {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  div {
+    padding-right: 8%;
+    img:nth-of-type(1) {
+      margin-right: 12px;
+    }
   }
 `;
