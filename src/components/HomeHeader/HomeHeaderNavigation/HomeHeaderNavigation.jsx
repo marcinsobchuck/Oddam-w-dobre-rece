@@ -9,22 +9,22 @@ import {
   ListItem,
   Welcome,
 } from "./HomeHeaderNavigation.styled";
-import MyContext from "../../../context";
+import { AuthContext } from "../../../context";
 
 export const HomeHeaderNavigation = () => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(MyContext);
+  const { currentUser, logOut } = useContext(AuthContext);
 
   return (
     <NavigationWrapper>
-      {isLoggedIn ? (
+      {currentUser ? (
         <Navigation>
           <List>
-            <Welcome>Cześć krzysztof@gmail.com</Welcome>
+            <Welcome>Cześć {currentUser.email}</Welcome>
             <ListItem yellowBorder>
               <Link to="/oddaj-rzeczy">Oddaj rzeczy</Link>
             </ListItem>
             <ListItem>
-              <Link onClick={() => setIsLoggedIn(false)} to="/wylogowano">
+              <Link to="/wylogowano" onClick={logOut}>
                 Wyloguj
               </Link>
             </ListItem>

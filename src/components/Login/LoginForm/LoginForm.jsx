@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { Error } from "../../Contact/ContactForm/Error";
 import { Form, InputBox, ButtonsWrapper, Button } from "./LoginForm.styled";
 import { Input } from "../../Contact/ContactForm/ContactForm.styled";
-import MyContext from "../../../context";
+import { AuthContext } from "../../../context";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -18,7 +18,8 @@ const validationSchema = Yup.object().shape({
 });
 
 export const LoginForm = () => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(MyContext);
+  const { logIn, currentUser } = useContext(AuthContext);
+
   return (
     <>
       <Formik
@@ -62,8 +63,8 @@ export const LoginForm = () => {
               <Link to="/rejestracja">
                 <Button>Załóż konto</Button>
               </Link>
-              <Link to="/">
-                <Button login onClick={() => setIsLoggedIn(true)}>
+              <Link to={currentUser ? "/" : "/logowanie"}>
+                <Button login onClick={logIn(values.email, values.password)}>
                   Zaloguj się
                 </Button>
               </Link>

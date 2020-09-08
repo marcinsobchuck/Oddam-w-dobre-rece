@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import MyContext from "../../context";
+import React from "react";
+import { AuthProvider } from "../../context";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../../theme/GlobalStyle";
 import theme from "../../theme/theme";
@@ -12,14 +12,11 @@ import { RegisterView } from "../RegisterView/RegisterView";
 import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
 
 const Root = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  console.log(isLoggedIn);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <BrowserRouter>
-        <MyContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+        <AuthProvider>
           <Switch>
             <Route exact path="/" component={Home} />
             <PrivateRoute path="/oddaj-rzeczy" component={Form} />
@@ -27,7 +24,7 @@ const Root = () => {
             <Route path="/rejestracja" component={RegisterView} />
             <Route path="/wylogowano" component={LogoutView} />
           </Switch>
-        </MyContext.Provider>
+        </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>
   );

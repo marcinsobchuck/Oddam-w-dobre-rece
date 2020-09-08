@@ -1,5 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import fire from "./firebaseConfig";
 
-const MyContext = React.createContext();
+export const AuthContext = React.createContext();
 
-export default MyContext;
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const register = (email, password) => {
+    fire.auth().createUserWithEmailAndPassword(email, password);
+  };
+
+  const logIn = (email, password) => {
+    fire.auth().signInWithEmailAndPassword(email, password);
+  };
+
+  const logOut = () => {
+    fire.auth().signOut();
+  };
+
+  useEffect(() => {
+    fire.auth().onAuthStateChanged((user) => {
+      setCurrentUser(user);
+    });
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ currentUser, register, logIn, logOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

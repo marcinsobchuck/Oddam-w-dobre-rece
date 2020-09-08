@@ -7,6 +7,7 @@ import {
   StepsWrapper,
 } from "./SimpleSteps.styled";
 import { Button } from "../HomeHeader/HomeHeaderMain/HomeHeaderMain.styled";
+import { Link } from "react-router-dom";
 import decoration from "../../assets/icons/Decoration.svg";
 import icon1 from "../../assets/icons/Icon-1.svg";
 import icon2 from "../../assets/icons/Icon-2.svg";
@@ -44,7 +45,9 @@ export const SimpleSteps = () => {
           </Step>
         </StepsContainer>
       </StepsWrapper>
-      <Button>ODDAJ RZECZY</Button>
+      <Link to="/oddaj-rzeczy">
+        <Button>ODDAJ RZECZY</Button>
+      </Link>
     </SimpleStepsContainer>
   );
 };

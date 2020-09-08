@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Error } from "../../Contact/ContactForm/Error";
 import { Form, InputBox, ButtonsWrapper, Button } from "./RegisterForm.styled";
 import { Input } from "../../Contact/ContactForm/ContactForm.styled";
+import { AuthContext } from "../../../context";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -21,6 +22,8 @@ const validationSchema = Yup.object().shape({
 });
 
 export const RegisterForm = () => {
+  const { register, currentUser } = useContext(AuthContext);
+
   return (
     <>
       <Formik
@@ -32,62 +35,69 @@ export const RegisterForm = () => {
         validationSchema={validationSchema}
       >
         {({ values, errors, touched, handleChange, handleBlur }) => (
-          <Form>
-            <InputBox marginBot>
-              <label htmlFor="email">Email</label>
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                error={touched.email && errors.email}
-              />
-              <Error touched={touched.email} message={errors.email} />
-            </InputBox>
-            <InputBox>
-              <label htmlFor="password">Hasło</label>
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-                error={touched.password && errors.password}
-              />
-              <Error touched={touched.password} message={errors.password} />
-            </InputBox>
-            <InputBox>
-              <label htmlFor="passwordConfirmation">Powtóz hasło</label>
-              <Input
-                type="password"
-                name="passwordConfirmation"
-                id="passwordConfirmation"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.passwordConfirmation}
-                error={
-                  touched.passwordConfirmation && errors.passwordConfirmation
-                }
-              />
-              <Error
-                touched={touched.passwordConfirmation}
-                message={errors.passwordConfirmation}
-              />
-            </InputBox>
-          </Form>
+          <>
+            <Form>
+              <InputBox marginBot>
+                <label htmlFor="email">Email</label>
+                <Input
+                  type="email"
+                  name="email"
+                  id="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                  error={touched.email && errors.email}
+                />
+                <Error touched={touched.email} message={errors.email} />
+              </InputBox>
+              <InputBox>
+                <label htmlFor="password">Hasło</label>
+                <Input
+                  type="password"
+                  name="password"
+                  id="password"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                  error={touched.password && errors.password}
+                />
+                <Error touched={touched.password} message={errors.password} />
+              </InputBox>
+              <InputBox>
+                <label htmlFor="passwordConfirmation">Powtórz hasło</label>
+                <Input
+                  type="password"
+                  name="passwordConfirmation"
+                  id="passwordConfirmation"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.passwordConfirmation}
+                  error={
+                    touched.passwordConfirmation && errors.passwordConfirmation
+                  }
+                />
+                <Error
+                  touched={touched.passwordConfirmation}
+                  message={errors.passwordConfirmation}
+                />
+              </InputBox>
+            </Form>
+            <ButtonsWrapper>
+              <Link to="/logowanie">
+                <Button>Zaloguj się</Button>
+              </Link>
+              <Link to={currentUser ? "/" : "/rejestracja"}>
+                <Button
+                  register
+                  onClick={register(values.email, values.password)}
+                >
+                  Załóż konto
+                </Button>
+              </Link>
+            </ButtonsWrapper>
+          </>
         )}
       </Formik>
-      <ButtonsWrapper>
-        <Link to="/logowanie">
-          <Button>Zaloguj się</Button>
-        </Link>
-        <Link to="/rejestracja">
-          <Button register>Załóż konto</Button>
-        </Link>
-      </ButtonsWrapper>
     </>
   );
 };
