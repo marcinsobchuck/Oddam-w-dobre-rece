@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Error } from "../../Contact/ContactForm/Error";
@@ -19,6 +19,8 @@ const validationSchema = Yup.object().shape({
 
 export const LoginForm = () => {
   const { logIn, currentUser } = useContext(AuthContext);
+
+  console.log(currentUser);
 
   return (
     <>
@@ -63,11 +65,13 @@ export const LoginForm = () => {
               <Link to="/rejestracja">
                 <Button>Załóż konto</Button>
               </Link>
-              <Link to={currentUser ? "/" : "/logowanie"}>
-                <Button login onClick={logIn(values.email, values.password)}>
-                  Zaloguj się
-                </Button>
-              </Link>
+              <Redirect to={currentUser ? "/" : "/logowanie"} />
+              <Button
+                login
+                onClick={() => logIn(values.email, values.password)}
+              >
+                Zaloguj się
+              </Button>
             </ButtonsWrapper>
           </>
         )}

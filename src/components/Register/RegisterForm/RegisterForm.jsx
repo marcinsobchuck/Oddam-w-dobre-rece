@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Error } from "../../Contact/ContactForm/Error";
@@ -86,14 +86,19 @@ export const RegisterForm = () => {
               <Link to="/logowanie">
                 <Button>Zaloguj się</Button>
               </Link>
-              <Link to={currentUser ? "/" : "/rejestracja"}>
-                <Button
-                  register
-                  onClick={register(values.email, values.password)}
-                >
-                  Załóż konto
-                </Button>
-              </Link>
+              <Redirect
+                to={
+                  currentUser && values.password === values.passwordConfirmation
+                    ? "/"
+                    : "/rejestracja"
+                }
+              />
+              <Button
+                register
+                onClick={() => register(values.email, values.password)}
+              >
+                Załóż konto
+              </Button>
             </ButtonsWrapper>
           </>
         )}
