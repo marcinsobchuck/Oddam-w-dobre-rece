@@ -5,7 +5,7 @@ import GlobalStyle from "../../theme/GlobalStyle";
 import theme from "../../theme/theme";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Home } from "../Home/Home";
-import { Form } from "../Form/Form";
+import { GiveFormView } from "../GiveFormView/GiveFormView";
 import { LoginView } from "../LoginView/LoginView";
 import { LogoutView } from "../LogoutView/LogoutView";
 import { RegisterView } from "../RegisterView/RegisterView";
@@ -19,7 +19,7 @@ const Root = () => {
         <AuthProvider>
           <Switch>
             <Route exact path="/" component={Home} />
-            <PrivateRoute path="/oddaj-rzeczy" component={Form} />
+            <PrivateRoute path="/oddaj-rzeczy" component={GiveFormView} />
             <Route path="/logowanie" component={LoginView} />
             <Route path="/rejestracja" component={RegisterView} />
             <Route path="/wylogowano" component={LogoutView} />

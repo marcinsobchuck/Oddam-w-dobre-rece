@@ -3,7 +3,13 @@ import { Link, Redirect } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Error } from "../../Contact/ContactForm/Error";
-import { Form, InputBox, ButtonsWrapper, Button } from "./LoginForm.styled";
+import {
+  Form,
+  InputBox,
+  ButtonsWrapper,
+  Button,
+  FormWrap,
+} from "./LoginForm.styled";
 import { Input } from "../../Contact/ContactForm/ContactForm.styled";
 import { AuthContext } from "../../../context";
 
@@ -20,8 +26,6 @@ const validationSchema = Yup.object().shape({
 export const LoginForm = () => {
   const { logIn, currentUser } = useContext(AuthContext);
 
-  console.log(currentUser);
-
   return (
     <>
       <Formik
@@ -29,50 +33,57 @@ export const LoginForm = () => {
           email: "",
           password: "",
         }}
+        onSubmit={(values) => logIn(values.email, values.password)}
         validationSchema={validationSchema}
       >
-        {({ values, errors, touched, handleChange, handleBlur }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+        }) => (
           <>
-            <Form>
-              <InputBox marginBot>
-                <label htmlFor="email">Email</label>
-                <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  error={touched.email && errors.email}
-                />
-                <Error touched={touched.email} message={errors.email} />
-              </InputBox>
-              <InputBox>
-                <label htmlFor="password">Hasło</label>
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  error={touched.password && errors.password}
-                />
-                <Error touched={touched.password} message={errors.password} />
-              </InputBox>
+            <Form onSubmit={handleSubmit}>
+              <FormWrap>
+                <InputBox marginBot>
+                  <label htmlFor="email">Email</label>
+                  <Input
+                    type="email"
+                    name="email"
+                    id="email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                    error={touched.email && errors.email}
+                  />
+                  <Error touched={touched.email} message={errors.email} />
+                </InputBox>
+                <InputBox>
+                  <label htmlFor="password">Hasło</label>
+                  <Input
+                    type="password"
+                    name="password"
+                    id="password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    error={touched.password && errors.password}
+                  />
+                  <Error touched={touched.password} message={errors.password} />
+                </InputBox>
+              </FormWrap>
+              <ButtonsWrapper>
+                <Link to="/rejestracja">
+                  <Button>Załóż konto</Button>
+                </Link>
+                <Redirect to={currentUser ? "/" : "/logowanie"} />
+                <Button login type="submit">
+                  Zaloguj się
+                </Button>
+              </ButtonsWrapper>
             </Form>
-            <ButtonsWrapper>
-              <Link to="/rejestracja">
-                <Button>Załóż konto</Button>
-              </Link>
-              <Redirect to={currentUser ? "/" : "/logowanie"} />
-              <Button
-                login
-                onClick={() => logIn(values.email, values.password)}
-              >
-                Zaloguj się
-              </Button>
-            </ButtonsWrapper>
           </>
         )}
       </Formik>

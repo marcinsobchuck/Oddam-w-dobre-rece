@@ -4,7 +4,6 @@ import { AuthContext } from "../../../context";
 
 export const PrivateRoute = ({ component, path, exact, ...rest }) => {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
 
   const condition = currentUser;
 

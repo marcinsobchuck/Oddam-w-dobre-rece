@@ -3,13 +3,18 @@ import styled from "styled-components";
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 40px 68px;
-  background-color: #f0f1f1;
+  justify-content: center;
+  align-items: center;
   margin-top: 60px;
   label {
     color: ${({ theme }) => theme.colors.fontColor};
     font-weight: 600;
   }
+`;
+
+export const FormWrap = styled.div`
+  background-color: #f0f1f1;
+  padding: 40px 68px;
 `;
 
 export const InputBox = styled.div`

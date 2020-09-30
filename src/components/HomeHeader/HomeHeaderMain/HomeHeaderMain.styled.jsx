@@ -20,7 +20,6 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.fontColor};
   text-align: center;
   letter-spacing: -0.76px;
-
   font-weight: 400;
 `;
 
