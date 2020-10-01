@@ -17,3 +17,9 @@ export const StepStatus = styled.p`
   padding-top: 36px;
   margin-bottom: 70px;
 `;
+
+export const ErrorStyled = styled.p`
+  color: red;
+  font-size: 22px;
+  margin-top: 10px;
+`;

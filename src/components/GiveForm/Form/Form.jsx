@@ -62,7 +62,11 @@ export const Form = () => {
     switch (activeStep) {
       case 1:
         return (
-          <StepOne setSummary={setSummary} handleNextClick={handleNextClick} />
+          <StepOne
+            setSummary={setSummary}
+            handleNextClick={handleNextClick}
+            summary={summary}
+          />
         );
       case 2:
         return (

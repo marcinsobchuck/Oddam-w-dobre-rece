@@ -1,9 +1,14 @@
 import React from "react";
 
 import { Formik, Field } from "formik";
-import { Form, StepStatus } from "./StepOne.styled";
+import * as Yup from "yup";
+import { Form, StepStatus, ErrorStyled } from "./StepOne.styled";
 
-export const StepOne = ({ handleNextClick, setSummary }) => {
+const validationSchema = Yup.object().shape({
+  clothes: Yup.string().required("Wybierz jedną z opcji"),
+});
+
+export const StepOne = ({ handleNextClick, setSummary, summary }) => {
   const handleUpdate = (v) => {
     setSummary((prevState) => ({ ...prevState, toWho: [v.clothes] }));
     handleNextClick();
@@ -13,12 +18,15 @@ export const StepOne = ({ handleNextClick, setSummary }) => {
     <>
       <StepStatus>Krok 1/4</StepStatus>
       <Formik
-        initialValues={{ clothes: "" }}
+        initialValues={{
+          clothes: summary.toWho[0],
+        }}
         onSubmit={(values) => {
           handleUpdate(values);
         }}
+        validationSchema={validationSchema}
       >
-        {({ values, handleSubmit }) => (
+        {({ handleSubmit, errors }) => (
           <Form onSubmit={handleSubmit}>
             <h1>Zaznacz co chcesz oddać</h1>
             <label htmlFor="reusable">
@@ -27,7 +35,6 @@ export const StepOne = ({ handleNextClick, setSummary }) => {
                 name="clothes"
                 value="Ubrania, które nadają się do ponownego użycia"
                 type="radio"
-                required
               />
               Ubrania, które nadają się do ponownego użycia
             </label>
@@ -52,6 +59,7 @@ export const StepOne = ({ handleNextClick, setSummary }) => {
               <Field id="other" name="clothes" value="Inne" type="radio" />
               Inne
             </label>
+            <ErrorStyled>{errors.clothes}</ErrorStyled>
             <button type="submit">DALEJ</button>
           </Form>
         )}

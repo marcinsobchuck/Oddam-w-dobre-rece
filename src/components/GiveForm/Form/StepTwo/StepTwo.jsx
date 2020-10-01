@@ -1,7 +1,12 @@
 import React from "react";
 
 import { Formik, Field } from "formik";
-import { Form, StepStatus } from "./StepTwo.styled";
+import * as Yup from "yup";
+import { Form, StepStatus, ErrorStyled } from "./StepTwo.styled";
+
+const validationSchema = Yup.object().shape({
+  quantity: Yup.number().required("Wybierz ilość worków do oddania"),
+});
 
 export const StepTwo = ({ handleNextClick, handlePrevClick, setSummary }) => {
   const handleUpdate = (v) => {
@@ -21,12 +26,13 @@ export const StepTwo = ({ handleNextClick, handlePrevClick, setSummary }) => {
         onSubmit={(values) => {
           handleUpdate(values);
         }}
+        validationSchema={validationSchema}
       >
-        {({ values, handleSubmit }) => (
+        {({ handleSubmit, errors }) => (
           <Form onSubmit={handleSubmit}>
             <h1>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h1>
             <label htmlFor="quantity">Liczba 60l worków: </label>
-            <Field required id="quantity" name="quantity" as="select">
+            <Field id="quantity" name="quantity" as="select">
               <option value="" disabled>
                 Wybierz
               </option>
@@ -37,9 +43,11 @@ export const StepTwo = ({ handleNextClick, handlePrevClick, setSummary }) => {
               <option value="4">4</option>
               <option value="5">5</option>
             </Field>
-            {JSON.stringify(values)}
+            <ErrorStyled>{errors.quantity}</ErrorStyled>
             <button type="submit">DALEJ</button>
-            <button onClick={handlePrevClick}>WSTECZ</button>
+            <button type="button" onClick={handlePrevClick}>
+              WSTECZ
+            </button>
           </Form>
         )}
       </Formik>
