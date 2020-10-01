@@ -18,8 +18,8 @@ const Root = () => {
       <BrowserRouter>
         <AuthProvider>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <PrivateRoute path="/oddaj-rzeczy" component={GiveFormView} />
+            <Route path="/oddaj-rzeczy" component={Home} />
+            <PrivateRoute exact path="/" component={GiveFormView} />
             <Route path="/logowanie" component={LoginView} />
             <Route path="/rejestracja" component={RegisterView} />
             <Route path="/wylogowano" component={LogoutView} />

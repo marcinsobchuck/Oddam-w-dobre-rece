@@ -4,14 +4,16 @@ import { Summary } from "./Summary/Summary";
 import { Important } from "./Important/Important";
 import { StepOne } from "./StepOne/StepOne";
 import { StepTwo } from "./StepTwo/StepTwo";
+import { StepThree } from "./StepThree/StepThree";
 
-let stepsCounter = 1;
+let stepsCounter = 3;
 
 export const Form = () => {
   const [activeStep, setActiveStep] = useState(stepsCounter);
   const [summary, setSummary] = useState({
     toWho: [],
     localisation: "",
+    organisation: "",
     address: {
       street: "",
       city: "",
@@ -76,8 +78,14 @@ export const Form = () => {
             handlePrevClick={handlePrevClick}
           />
         );
-      // case 3:
-      //   return <Important text="3" />;
+      case 3:
+        return (
+          <StepThree
+            setSummary={setSummary}
+            handleNextClick={handleNextClick}
+            handlePrevClick={handlePrevClick}
+          />
+        );
       // case 4:
       //   return <Important text="4" />;
       // case 5:
