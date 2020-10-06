@@ -5,8 +5,9 @@ import { Important } from "./Important/Important";
 import { StepOne } from "./StepOne/StepOne";
 import { StepTwo } from "./StepTwo/StepTwo";
 import { StepThree } from "./StepThree/StepThree";
+import { StepFour } from "./StepFour/StepFour";
 
-let stepsCounter = 3;
+let stepsCounter = 4;
 
 export const Form = () => {
   const [activeStep, setActiveStep] = useState(stepsCounter);
@@ -86,8 +87,14 @@ export const Form = () => {
             handlePrevClick={handlePrevClick}
           />
         );
-      // case 4:
-      //   return <Important text="4" />;
+      case 4:
+        return (
+          <StepFour
+            setSummary={setSummary}
+            handleNextClick={handleNextClick}
+            handlePrevClick={handlePrevClick}
+          />
+        );
       // case 5:
       //   return <Summary />;
       default:
