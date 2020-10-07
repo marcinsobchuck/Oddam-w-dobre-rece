@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Formik, Field } from "formik";
-import * as Yup from "yup";
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import * as Yup from "yup";
+import pl from "date-fns/locale/pl";
+import Moment from "moment";
 
 import {
   StepStatus,
@@ -15,16 +17,19 @@ import {
   Title,
 } from "./StepFour.styled";
 
+registerLocale("pl", pl);
+
 const validationSchema = Yup.object().shape({
   street: Yup.string().required("Pole wymagane").min("2", "Conajmniej 2 znaki"),
   city: Yup.string().required("Pole wymagane").min("2", "Conajmniej 2 znaki"),
   postalCode: Yup.string()
     .matches(/^[0-9]{2}(?:-[0-9]{3})?$/, "Prawidłowy format to XX-XXX")
-    .min("5", "Minimum 5 znaków")
-    .max("5", "Maksimum 5 znaków"),
-  phone: Yup.number()
-    .min("9", "Numer telefonu powinien zawierać 9 znaków")
-    .max("9", "Numer telefonu powinien zawierać 9 znaków"),
+    .test("postalCode", "Wymagane 5 znaków", (val) =>
+      val ? val.length === 6 : null
+    ),
+  phone: Yup.number().test("phone", "Wymagane 9 znaków", (val) =>
+    val ? val.toString().length === 9 : null
+  ),
   date: Yup.date().required("To pole jest wymagane"),
   hour: Yup.string()
     .matches(
@@ -35,15 +40,22 @@ const validationSchema = Yup.object().shape({
 });
 
 export const StepFour = ({ handleNextClick, handlePrevClick, setSummary }) => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate] = useState(new Date());
 
   const handleUpdate = (v) => {
     setSummary((prevState) => ({
       ...prevState,
-
-      localisation: v.localisation,
-      toWho: [...prevState.toWho, v.helpTarget],
-      organisation: v.organisation,
+      address: {
+        street: v.street,
+        city: v.city,
+        postalCode: v.postalCode,
+        phone: v.phone,
+      },
+      pickup: {
+        date: Moment(v.date).format("DD-MM-YYYY"),
+        hour: v.hour,
+        comments: v.comments,
+      },
     }));
     handleNextClick();
   };
@@ -66,7 +78,7 @@ export const StepFour = ({ handleNextClick, handlePrevClick, setSummary }) => {
         }}
         validationSchema={validationSchema}
       >
-        {({ values, handleSubmit, errors }) => (
+        {({ values, handleSubmit, errors, setFieldValue }) => (
           <Form onSubmit={handleSubmit}>
             <Wrapper>
               <AddressWrapper>
@@ -92,13 +104,17 @@ export const StepFour = ({ handleNextClick, handlePrevClick, setSummary }) => {
                 <h2>Termin odbioru:</h2>
                 <InputWrapper>
                   <label htmlFor="date">Data</label>
-
-                  <Field name="date" id="date" as={DatePicker} />
+                  <DatePicker
+                    selected={values.date ? values.date : null}
+                    onChange={(date) => setFieldValue("date", date)}
+                    dateFormatCalendar="MMMM d, yyyy"
+                    locale="pl"
+                    isClearable
+                  />
                 </InputWrapper>
                 <InputWrapper>
                   <label htmlFor="hour">Godzina</label>
                   <Field name="hour" id="hour" />
-                  {errors.hour}
                 </InputWrapper>
                 <InputWrapper>
                   <label htmlFor="comments">Uwagi dla kuriera</label>

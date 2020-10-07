@@ -7,7 +7,7 @@ import { StepTwo } from "./StepTwo/StepTwo";
 import { StepThree } from "./StepThree/StepThree";
 import { StepFour } from "./StepFour/StepFour";
 
-let stepsCounter = 4;
+let stepsCounter = 1;
 
 export const Form = () => {
   const [activeStep, setActiveStep] = useState(stepsCounter);
@@ -32,8 +32,6 @@ export const Form = () => {
     stepsCounter++;
     setActiveStep(stepsCounter);
   };
-
-  console.log(summary);
 
   const handlePrevClick = () => {
     stepsCounter--;
