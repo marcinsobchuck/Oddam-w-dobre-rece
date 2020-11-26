@@ -5,6 +5,7 @@ export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [activeStep, setActiveStep] = useState(1);
 
   const register = (email, password) => {
     fire.auth().createUserWithEmailAndPassword(email, password);
@@ -25,7 +26,16 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser, register, logIn, logOut }}>
+    <AuthContext.Provider
+      value={{
+        activeStep,
+        setActiveStep,
+        currentUser,
+        register,
+        logIn,
+        logOut,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

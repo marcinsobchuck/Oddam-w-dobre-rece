@@ -49,19 +49,36 @@ export const HomeHeaderNavigation = () => {
             <Link to="/">Start</Link>
           </ListItem>
           <ListItem menuListItem>
-            <LinkScroll to="simple_Steps" smooth duration={1000} offset={-120}>
-              O co chodzi?
-            </LinkScroll>
+            {currentUser ? (
+              <Link to="/">O co chodzi?</Link>
+            ) : (
+              <LinkScroll
+                to="simple_Steps"
+                smooth
+                duration={1000}
+                offset={-120}
+              >
+                O co chodzi?
+              </LinkScroll>
+            )}
           </ListItem>
           <ListItem menuListItem>
-            <LinkScroll to="about_Us" smooth duration={1000}>
-              O nas
-            </LinkScroll>
+            {currentUser ? (
+              <Link to="/">O nas</Link>
+            ) : (
+              <LinkScroll to="about_Us" smooth duration={1000}>
+                O nas
+              </LinkScroll>
+            )}
           </ListItem>
           <ListItem menuListItem>
-            <LinkScroll to="help" smooth duration={1000} offset={70}>
-              Fundacja i organizacje
-            </LinkScroll>
+            {currentUser ? (
+              <Link to="/">Fundacja i organizacje</Link>
+            ) : (
+              <LinkScroll to="help" smooth duration={1000} offset={70}>
+                Fundacja i organizacje
+              </LinkScroll>
+            )}
           </ListItem>
           <ListItem menuListItem>
             <LinkScroll to="contact" smooth duration={1000}>

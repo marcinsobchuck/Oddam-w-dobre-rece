@@ -76,7 +76,7 @@ export const LoginForm = () => {
               </FormWrap>
               <ButtonsWrapper>
                 <Link to="/rejestracja">
-                  <Button>Załóż konto</Button>
+                  <Button type="button">Załóż konto</Button>
                 </Link>
                 <Redirect to={currentUser ? "/" : "/logowanie"} />
                 <Button login type="submit">

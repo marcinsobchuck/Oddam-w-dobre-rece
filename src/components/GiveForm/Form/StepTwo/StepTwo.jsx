@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
-import { Form, StepStatus, ErrorStyled } from "./StepTwo.styled";
+import {
+  Form,
+  StepStatus,
+  ErrorStyled,
+  Wrapper,
+  TitleStyled,
+  LabelStyled,
+  SelectWrapper,
+} from "./StepTwo.styled";
+import { StyledButton, ButtonsWrapper } from "../Button/Button.styled";
 
 const validationSchema = Yup.object().shape({
   quantity: Yup.number().required("Wybierz ilość worków do oddania"),
 });
 
-export const StepTwo = ({ handleNextClick, handlePrevClick, setSummary }) => {
+export const StepTwo = ({
+  handleNextClick,
+  handlePrevClick,
+  setSummary,
+  summary,
+}) => {
+  const [isActive, setIsActive] = useState(false);
+
+  const handleSelect = () => {
+    setIsActive((prevState) => !prevState);
+  };
+
   const handleUpdate = (v) => {
     setSummary((prevState) => ({
       ...prevState,
 
-      toWho: [...prevState.toWho, v.quantity],
+      quantity: v.quantity,
     }));
     handleNextClick();
   };
@@ -22,7 +42,9 @@ export const StepTwo = ({ handleNextClick, handlePrevClick, setSummary }) => {
     <>
       <StepStatus>Krok 2/4</StepStatus>
       <Formik
-        initialValues={{ quantity: "" }}
+        initialValues={{
+          quantity: summary.quantity !== undefined ? summary.quantity : "",
+        }}
         onSubmit={(values) => {
           handleUpdate(values);
         }}
@@ -30,24 +52,35 @@ export const StepTwo = ({ handleNextClick, handlePrevClick, setSummary }) => {
       >
         {({ handleSubmit, errors }) => (
           <Form onSubmit={handleSubmit}>
-            <h1>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h1>
-            <label htmlFor="quantity">Liczba 60l worków: </label>
-            <Field id="quantity" name="quantity" as="select">
-              <option value="" disabled>
-                Wybierz
-              </option>
-
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </Field>
-            <ErrorStyled>{errors.quantity}</ErrorStyled>
-            <button type="submit">DALEJ</button>
-            <button type="button" onClick={handlePrevClick}>
-              WSTECZ
-            </button>
+            <Wrapper>
+              <TitleStyled>
+                Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:
+              </TitleStyled>
+              <SelectWrapper
+                onClick={handleSelect}
+                onBlur={isActive ? handleSelect : null}
+                active={isActive}
+              >
+                <LabelStyled htmlFor="quantity">Liczba 60l worków:</LabelStyled>
+                <Field id="quantity" name="quantity" as="select">
+                  <option value="" disabled>
+                    — Wybierz —
+                  </option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </Field>
+              </SelectWrapper>
+              <ErrorStyled>{errors.quantity}</ErrorStyled>
+            </Wrapper>
+            <ButtonsWrapper>
+              <StyledButton previous type="button" onClick={handlePrevClick}>
+                Wstecz
+              </StyledButton>
+              <StyledButton type="submit">Dalej</StyledButton>
+            </ButtonsWrapper>
           </Form>
         )}
       </Formik>
