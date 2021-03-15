@@ -4,53 +4,37 @@ export const NavigationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  max-width: 50vw;
+  @media (max-width: ${({ theme }) => theme.screens.laptop}) {
+    margin-right: 60px;
+  }
 `;
 export const Navigation = styled.nav`
-  margin-top: 40px;
-  ${({ menu }) =>
-    menu &&
-    css`
-      margin-top: 17px;
-    `}
+  margin-top: ${({ menu }) => (menu ? "17px" : "40px")};
+
+  @media (max-width: ${({ theme }) => theme.screens.tablet}) {
+    /* display: ${({ menu }) => (menu ? "none" : null)}; */
+
+    ${({ isOpen }) => isOpen && css``}
+  }
 `;
 
 export const List = styled.ul`
   display: flex;
   align-items: center;
-`;
 
-export const ListItem = styled.li`
-  padding-left: 15px;
-  a {
-    display: block;
-    padding: 10px;
-    font-size: 13px;
-    color: #737373;
-    cursor: pointer;
+  @media (max-width: ${({ theme }) => theme.screens.tablet}) {
+    ${({ isSideMenu }) =>
+      isSideMenu &&
+      css`
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        flex-direction: column;
+        background: red;
+        z-index: 100;
+      `}
   }
-  ${({ yellowBorder }) =>
-    yellowBorder &&
-    css`
-      a {
-        border: 0.75px solid ${({ theme }) => theme.colors.loginBorder};
-      }
-    `}
-  ${({ menuListItem }) =>
-    menuListItem &&
-    css`
-      padding-left: 0;
-      a {
-        padding: 10px 20px;
-        color: ${({ theme }) => theme.colors.fontColor};
-        border: 0.75px solid transparent;
-        transition: 0.2s;
-        font-size: 18px;
-        &:hover {
-          border: 0.75px solid ${({ theme }) => theme.colors.fontColor};
-        }
-      }
-    `}
 `;
 
 export const Welcome = styled.p`

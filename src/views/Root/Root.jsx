@@ -10,12 +10,14 @@ import { LoginView } from "../LoginView/LoginView";
 import { LogoutView } from "../LogoutView/LogoutView";
 import { RegisterView } from "../RegisterView/RegisterView";
 import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
+import { ScrollToTop } from "./ScrollToTop/ScrollToTop";
 
 const Root = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <BrowserRouter>
+        <ScrollToTop />
         <AuthProvider>
           <Switch>
             <Route exact path="/" component={Home} />

@@ -2,16 +2,27 @@ import React from "react";
 import { HomeHeaderNavigation } from "./HomeHeaderNavigation/HomeHeaderNavigation";
 import { HomeHeaderMain } from "./HomeHeaderMain/HomeHeaderMain";
 import hero from "../../assets/images/Home-Hero-Image.jpg";
-import { HeaderContainer, Hero } from "./HomeHeader.styled";
+import laptopImage from "../../assets/images/Rack1.jpeg";
+
+import {
+  HeaderContainer,
+  HomeHeaderWrapper,
+  Hero,
+  LaptopImage,
+  ImageWrapper,
+} from "./HomeHeader.styled";
 
 export const HomeHeader = () => {
   return (
-    <HeaderContainer>
+    <HeaderContainer id="start">
       <Hero src={hero} />
-      <section>
+      <HomeHeaderWrapper>
         <HomeHeaderNavigation />
         <HomeHeaderMain />
-      </section>
+        <ImageWrapper>
+          <LaptopImage src={laptopImage} />
+        </ImageWrapper>
+      </HomeHeaderWrapper>
     </HeaderContainer>
   );
 };

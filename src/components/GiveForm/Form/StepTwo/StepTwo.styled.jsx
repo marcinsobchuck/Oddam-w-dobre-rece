@@ -44,12 +44,13 @@ export const TitleStyled = styled.h1`
 export const LabelStyled = styled.label`
   font-size: 24px;
   font-weight: 300;
-  margin-right: 24px;
+  padding-right: 24px;
 `;
 
 export const SelectWrapper = styled.div`
   display: flex;
   align-items: center;
+  align-self: flex-start;
   margin-bottom: 24px;
   select {
     cursor: pointer;

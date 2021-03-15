@@ -9,9 +9,6 @@ export const MainContainer = styled.div`
   max-width: 680px;
   margin-right: 60px;
   margin-top: 110px;
-  img {
-    margin-top: 25px;
-  }
 `;
 
 export const Title = styled.h1`
@@ -20,6 +17,7 @@ export const Title = styled.h1`
   text-align: center;
   letter-spacing: -0.76px;
   font-weight: 400;
+  margin-bottom: 25px;
 `;
 
 export const FourStepsContainer = styled.div`

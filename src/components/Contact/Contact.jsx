@@ -1,22 +1,30 @@
 import React from "react";
-import { Background, FormContainer, Footer } from "./Contact.styled";
-import decoration from "../../assets/icons/Decoration.svg";
+import {
+  Background,
+  FormContainer,
+  Title,
+  Footer,
+  Wrapper,
+  Copyright,
+  IconsWrapper,
+} from "./Contact.styled";
+import { Decoration } from "../Decoration/Decoration";
 import { ContactForm } from "./ContactForm/ContactForm";
 import facebook from "../../assets/icons/Facebook.svg";
 import instagram from "../../assets/icons/Instagram.svg";
 
 export const Contact = () => {
   return (
-    <div style={{ position: "relative" }} id="contact">
+    <Wrapper id="contact">
       <Background>
         <FormContainer>
-          <h1>Skontaktuj się z nami</h1>
-          <img src={decoration} alt="decoration" />
+          <Title>Skontaktuj się z nami</Title>
+          <Decoration />
           <ContactForm />
         </FormContainer>
         <Footer>
-          <p>Copyright by Coders Lab</p>
-          <div>
+          <Copyright>Copyright by Coders Lab</Copyright>
+          <IconsWrapper>
             <a
               href="https://www.facebook.com/"
               target="_blank"
@@ -31,9 +39,9 @@ export const Contact = () => {
             >
               <img src={instagram} alt="intagram" />
             </a>
-          </div>
+          </IconsWrapper>
         </Footer>
       </Background>
-    </div>
+    </Wrapper>
   );
 };

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Title } from "../styled/Description.styled";
-import { List, ListItemsWrap, Row, ListItem } from "../styled/List.styled";
 import { Pagination } from "../Pagination/Pagination";
-
+import { List } from "../List/List";
 import data from "../../../data/data.json";
 
 export const HelpOrganisations = () => {
@@ -18,20 +16,7 @@ export const HelpOrganisations = () => {
 
   return (
     <>
-      <Title>{data.organisations.desc}</Title>
-      <List>
-        {currentPosts.map((el) => {
-          return (
-            <Row key={el.id}>
-              <ListItemsWrap>
-                <ListItem rowTitle>{el.name}</ListItem>
-                <ListItem>{el.orgDesc}</ListItem>
-              </ListItemsWrap>
-              <ListItem centered>{el.things}</ListItem>
-            </Row>
-          );
-        })}
-      </List>
+      <List currentPosts={currentPosts} description={data.organisations.desc} />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}

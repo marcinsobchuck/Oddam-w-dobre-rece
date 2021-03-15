@@ -1,28 +1,26 @@
 import styled from "styled-components";
 
-export const StepsWrapper = styled.div`
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.backgroundColor};
-  margin-bottom: 35px;
-`;
-
-export const SimpleStepsContainer = styled.div`
+export const SimpleStepsContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 55px;
 `;
 
-export const Title = styled.div`
+export const StepsBackground = styled.div`
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
+  margin-top: 26px;
+  margin-bottom: 60px;
+`;
+
+export const Title = styled.h1`
   text-align: center;
-  margin-bottom: 45px;
-  h1 {
-    font-size: 38px;
-    letter-spacing: -0.76px;
-    color: ${({ theme }) => theme.colors.fontColor};
-    font-weight: 400;
-    margin-bottom: 30px;
-  }
+  font-size: 38px;
+  letter-spacing: -0.76px;
+  color: ${({ theme }) => theme.colors.fontColor};
+  font-weight: 400;
+  margin-bottom: 26px;
 `;
 
 export const StepsContainer = styled.div`
@@ -61,4 +59,8 @@ export const Step = styled.div`
   p {
     text-align: center;
   }
+`;
+
+export const Idk = styled.div`
+  justify-content: stretch;
 `;

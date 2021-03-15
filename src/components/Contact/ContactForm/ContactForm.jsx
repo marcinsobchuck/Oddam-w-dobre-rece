@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Input, Textarea, Form } from "./ContactForm.styled";
+import {
+  StyledLabel,
+  InputsWrapper,
+  InputItem,
+  StyledInput,
+  Textarea,
+  Form,
+  SuccessMessage,
+} from "./ContactForm.styled";
 import { Error } from "./Error";
+import { Button } from "../../Button/Button";
 import axios from "axios";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
@@ -62,15 +71,15 @@ export const ContactForm = () => {
       }) => (
         <Form onSubmit={handleSubmit}>
           {isSuccess && (
-            <div className="success">
+            <SuccessMessage>
               <p>Wiadomość została wysłana! Wkrótce się skontaktujemy</p>
-            </div>
+            </SuccessMessage>
           )}
           {isSubmitting && <LinearProgress />}
-          <div className="inputs_row">
-            <div className="margin_right">
-              <label htmlFor="name">Wpisz swoje imię</label>
-              <Input
+          <InputsWrapper>
+            <InputItem>
+              <StyledLabel htmlFor="name">Wpisz swoje imię</StyledLabel>
+              <StyledInput
                 type="text"
                 name="name"
                 id="name"
@@ -81,10 +90,10 @@ export const ContactForm = () => {
                 error={touched.name && errors.name}
               />
               <Error touched={touched.name} message={errors.name} />
-            </div>
-            <div>
-              <label htmlFor="email">Wpisz swój e-mail</label>
-              <Input
+            </InputItem>
+            <InputItem>
+              <StyledLabel htmlFor="email">Wpisz swój e-mail</StyledLabel>
+              <StyledInput
                 type="email"
                 name="email"
                 id="email"
@@ -95,10 +104,10 @@ export const ContactForm = () => {
                 error={touched.email && errors.email}
               />
               <Error touched={touched.email} message={errors.email} />
-            </div>
-          </div>
+            </InputItem>
+          </InputsWrapper>
           <div>
-            <label htmlFor="message">Wpisz swoją wiadomość</label>
+            <StyledLabel htmlFor="message">Wpisz swoją wiadomość</StyledLabel>
             <Textarea
               name="message"
               id="message"
@@ -110,11 +119,7 @@ export const ContactForm = () => {
             ></Textarea>
             <Error touched={touched.message} message={errors.message} />
           </div>
-          <div className="button">
-            <button type="submit" disabled={isSubmitting}>
-              Wyślij
-            </button>
-          </div>
+          <Button contact name="Wyślij" type="submit" disabled={isSubmitting} />
         </Form>
       )}
     </Formik>

@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { HelpFoundations } from "./HelpFoundations/HelpFoundations";
 import { HelpLocal } from "./HelpLocal/HelpLocal";
 import { HelpOrganisations } from "./HelpOrganisations/HelpOrganisations";
-import decoration from "../../assets/icons/Decoration.svg";
+import { Decoration } from "../Decoration/Decoration";
 import {
   Wrapper,
   HelpTargetContainer,
   HelpInfoContainer,
-  ButtonContainer,
+  ButtonsWrapper,
 } from "./Help.styled";
-import { Button } from "../../components/HomeHeader/HomeHeaderMain/HomeHeaderMain.styled";
+import { Button } from "../Button/Button";
 
 export const TARGETS = {
   loggedIn: "loggedIn",
@@ -42,31 +42,30 @@ export const Help = () => {
     <Wrapper id="help">
       <HelpInfoContainer>
         <h1>Komu pomagamy?</h1>
-        <img src={decoration} alt="decoration" />
-        <ButtonContainer>
+        <Decoration />
+        <ButtonsWrapper>
           <Button
+            name="Fundacjom"
             active={activeTab === TARGETS.foundations}
             onClick={() => handleClick(TARGETS.foundations)}
             helpBtn
-          >
-            Fundacjom
-          </Button>
+          />
+
           <Button
+            name="Organizacjom pozarządowym"
             active={activeTab === TARGETS.organisations}
             onClick={() => handleClick(TARGETS.organisations)}
             helpBtn
             center
-          >
-            Organizacjom pozarządowym
-          </Button>
+          />
+
           <Button
+            name="Lokalnym zbiórkom"
             active={activeTab === TARGETS.local}
             onClick={() => handleClick(TARGETS.local)}
             helpBtn
-          >
-            Lokalnym zbiórkom
-          </Button>
-        </ButtonContainer>
+          />
+        </ButtonsWrapper>
       </HelpInfoContainer>
       <HelpTargetContainer>{renderContent()}</HelpTargetContainer>
     </Wrapper>

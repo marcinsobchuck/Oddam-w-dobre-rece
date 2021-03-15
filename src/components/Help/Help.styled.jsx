@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
   max-width: 1300px;
-  margin: 0 auto 80px auto;
+  margin: 0 auto;
 `;
 
 export const HelpInfoContainer = styled.div`
@@ -24,12 +24,12 @@ export const HelpInfoContainer = styled.div`
   }
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 58px;
   max-width: 750px;
   width: 750px;
+  margin-top: 18px;
 `;
 
 export const HelpTargetContainer = styled.div`

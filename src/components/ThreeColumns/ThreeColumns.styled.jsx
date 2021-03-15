@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import threeColumnsBg from "../../assets/images/3-Columns-Background.png";
 
-export const ColumnsContainer = styled.div`
+export const ColumnsContainer = styled.section`
   background-image: url(${threeColumnsBg});
+`;
 
-  section {
-    display: flex;
-    justify-content: space-between;
-    background-repeat: no-repeat;
-    background-size: cover;
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 20px;
 `;
 
 export const Column = styled.div`

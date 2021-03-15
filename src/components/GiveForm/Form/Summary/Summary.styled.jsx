@@ -56,7 +56,7 @@ export const AddressPickupWrapper = styled.div`
   width: 60%;
 `;
 
-export const AddressPickupBox = styled.div`
+export const SummaryBox = styled.div`
   display: flex;
   flex-direction: column;
   :first-of-type {
@@ -64,29 +64,5 @@ export const AddressPickupBox = styled.div`
   }
   :nth-of-type(2) {
     width: 60%;
-  }
-`;
-
-export const AddressPickupRow = styled.div`
-  font-size: 24px;
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  :last-of-type {
-    margin-bottom: 0;
-  }
-  div:first-child {
-    margin-right: 35px;
-    width: 25%;
-  }
-  div:nth-of-type(2) {
-    width: 60%;
-  }
-  div:last-of-type {
-    div {
-      word-wrap: break-word;
-      width: 100%;
-    }
   }
 `;

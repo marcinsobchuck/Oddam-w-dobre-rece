@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
+export const StyledInput = styled.input`
   outline: none;
   background-color: transparent;
   font-size: 16px;
@@ -33,56 +33,41 @@ export const Textarea = styled.textarea`
 `;
 
 export const Form = styled.form`
-  .success {
-    width: 100%;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    color: green;
-    margin-bottom: 80px;
-    padding: 0 100px;
-  }
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
 
-  .error {
-    margin-top: 3px;
-    font-size: 14px;
-  }
-  .margin_right {
-    margin-right: 16px;
-  }
-  .inputs_row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-  }
-  label {
-    font-size: 18px;
-    margin-bottom: 6px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.fontColor};
-  }
-
-  .button {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-    button {
-      padding: 13px 53px;
-      background-color: transparent;
-      cursor: pointer;
-      border: 0.75px solid ${({ theme }) => theme.colors.fontColor};
-      font-size: 18px;
-      transition: 0.2s;
-      outline: none;
-      :hover {
-        border: 0.75px solid ${({ theme }) => theme.colors.loginBorder};
-      }
-    }
-  }
   .MuiLinearProgress-root {
     background-color: transparent;
   }
   .MuiLinearProgress-bar {
     background-color: ${({ theme }) => theme.colors.loginBorder};
   }
+`;
+
+export const SuccessMessage = styled.div`
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: green;
+  margin-bottom: 80px;
+  padding: 0 100px;
+`;
+
+export const InputsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+`;
+export const InputItem = styled.div`
+  :nth-of-type(1) {
+    margin-right: 16px;
+  }
+`;
+export const StyledLabel = styled.label`
+  font-size: 18px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.fontColor};
 `;

@@ -10,13 +10,13 @@ import {
   Number,
   SquareText,
 } from "./GiveFormMain.styled";
-import decoration from "../../../assets/icons/Decoration.svg";
+import { Decoration } from "../../Decoration/Decoration";
 
 export const GiveFormMain = () => {
   return (
     <MainContainer>
       <Title>Oddaj rzeczy, których już nie chcesz POTRZEBUJĄCYM</Title>
-      <img src={decoration} alt="decoration" />
+      <Decoration />
       <FourStepsContainer>
         <FourStepsTitle>Wystarczą 4 proste kroki:</FourStepsTitle>
         <Squares>

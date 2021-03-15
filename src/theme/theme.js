@@ -10,4 +10,11 @@ export default {
     fontBase: "Open Sans",
     fontAlt: "Montserrat",
   },
+  screens: {
+    phone: "600px",
+    tablet: "768px",
+    landscapeTablet: "992px",
+    laptop: "1280px",
+    smallDesktop: "1600px",
+  },
 };

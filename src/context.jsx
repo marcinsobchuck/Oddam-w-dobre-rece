@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
     fire.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
-  }, []);
+  });
 
   return (
     <AuthContext.Provider

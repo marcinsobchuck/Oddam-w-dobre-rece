@@ -1,6 +1,15 @@
 import styled, { css } from "styled-components";
 
-export const List = styled.ul`
+export const Title = styled.h2`
+  font-size: 22px;
+  color: ${({ theme }) => theme.colors.fontBase};
+  text-align: center;
+  max-width: 640px;
+  font-weight: 400;
+  margin-bottom: 66px;
+`;
+
+export const ListWrapper = styled.ul`
   width: 100%;
   display: flex;
   flex-direction: column;

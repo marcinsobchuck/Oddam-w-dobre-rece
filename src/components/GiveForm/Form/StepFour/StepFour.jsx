@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import pl from "date-fns/locale/pl";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
-import Moment from "moment";
 import {
   StepStatus,
   Form,
@@ -19,30 +18,36 @@ import {
   FormsWrapper,
   ErrorStyled,
 } from "./StepFour.styled";
-import { StyledButton, ButtonsWrapper } from "../Button/Button.styled";
+import { ButtonsWrapper } from "../ButtonsWrapper.styled";
+import { Button } from "../../../Button/Button";
+import { AddressFormInput } from "./FormInput";
 
 registerLocale("pl", pl);
+
+const postalCodeMask = [/\d/, /\d/, "-", /\d/, /\d/, /\d/];
 
 const validationSchema = Yup.object().shape({
   street: Yup.string().required("Pole wymagane").min("2", "Conajmniej 2 znaki"),
   city: Yup.string().required("Pole wymagane").min("2", "Conajmniej 2 znaki"),
   postalCode: Yup.string()
     .required("Pole wymagane")
-    .matches(/^[0-9]{2}(?:-[0-9]{3})?$/, "Prawidłowy format to XX-XXX")
-    .test("postalCode", "Wymagane 5 znaków", (val) =>
-      val ? val.length === 6 : null
-    ),
+    .matches(/^[0-9]{2}(?:-[0-9]{3})?$/, "Prawidłowy format to XX-XXX"),
   phone: Yup.number()
     .typeError("Tylko cyfry")
     .required("Pole wymagane")
     .test("phone", "Wymagane 9 znaków", (val) =>
       val ? val.toString().length === 9 : null
     ),
-  date: Yup.date().required("Pole wymagane"),
-  hour: Yup.date().required("Pole wymagane"),
+  date: Yup.date().typeError("Pole wymagane").required("Pole wymagane"),
+  hour: Yup.date().typeError("Pole wymagane").required("Pole wymagane"),
 });
 
-export const StepFour = ({ handleNextClick, handlePrevClick, setSummary }) => {
+export const StepFour = ({
+  handleNextClick,
+  handlePrevClick,
+  setSummary,
+  summary,
+}) => {
   const handleUpdate = (v) => {
     setSummary((prevState) => ({
       ...prevState,
@@ -53,8 +58,8 @@ export const StepFour = ({ handleNextClick, handlePrevClick, setSummary }) => {
         phone: v.phone,
       },
       pickup: {
-        date: Moment(v.date).format("DD-MM-YYYY"),
-        hour: Moment(v.hour).format("HH:mm"),
+        date: v.date,
+        hour: v.hour,
         comments: v.comments,
       },
     }));
@@ -65,20 +70,29 @@ export const StepFour = ({ handleNextClick, handlePrevClick, setSummary }) => {
       <StepStatus>Krok 4/4</StepStatus>
       <Formik
         initialValues={{
-          street: "",
-          city: "",
-          postalCode: "",
-          phone: "",
-          date: "",
-          hour: "",
-          comments: "",
+          street: summary.address.street !== "" ? summary.address.street : "",
+          city: summary.address.city !== "" ? summary.address.city : "",
+          postalCode:
+            summary.address.postalCode !== "" ? summary.address.postalCode : "",
+          phone: summary.address.phone !== "" ? summary.address.phone : "",
+          date: summary.pickup.date !== "" ? summary.pickup.date : "",
+          hour: summary.pickup.hour !== "" ? summary.pickup.hour : "",
+          comments:
+            summary.pickup.comments !== "" ? summary.pickup.comments : "",
         }}
         onSubmit={(values) => {
           handleUpdate(values);
         }}
         validationSchema={validationSchema}
       >
-        {({ values, handleSubmit, errors, setFieldValue }) => (
+        {({
+          values,
+          handleSubmit,
+          errors,
+          setFieldValue,
+          handleChange,
+          handleBlur,
+        }) => (
           <Form onSubmit={handleSubmit}>
             <Wrapper>
               <Title>
@@ -87,46 +101,33 @@ export const StepFour = ({ handleNextClick, handlePrevClick, setSummary }) => {
               <FormsWrapper>
                 <AddressWrapper>
                   <h2>Adres odbioru:</h2>
-                  <Row>
-                    <InputWrapper>
-                      <label htmlFor="street">Ulica</label>
-                      <Field name="street" id="street" />
-                    </InputWrapper>
-                    <ErrorStyled>
-                      {errors.street ? errors.street : <div>error</div>}
-                    </ErrorStyled>
-                  </Row>
-                  <Row>
-                    <InputWrapper>
-                      <label htmlFor="city">Miasto</label>
-                      <Field name="city" id="city" />
-                    </InputWrapper>
-                    <ErrorStyled>
-                      {errors.city ? errors.city : <div>error</div>}
-                    </ErrorStyled>
-                  </Row>
-                  <Row>
-                    <InputWrapper>
-                      <label htmlFor="postalCode">Kod pocztowy</label>
-                      <Field
-                        name="postalCode"
-                        id="postalCode"
-                        placeholder="00-000"
-                      />
-                    </InputWrapper>
-                    <ErrorStyled>
-                      {errors.postalCode ? errors.postalCode : <div>error</div>}
-                    </ErrorStyled>
-                  </Row>
-                  <Row>
-                    <InputWrapper>
-                      <label htmlFor="phone">Numer telefonu</label>
-                      <Field name="phone" id="phone" />
-                    </InputWrapper>
-                    <ErrorStyled>
-                      {errors.phone ? errors.phone : <div>error</div>}
-                    </ErrorStyled>
-                  </Row>
+                  <AddressFormInput
+                    htmlFor="street"
+                    text="Ulica"
+                    error={errors.street ? errors.street : <div>error</div>}
+                  />
+                  <AddressFormInput
+                    htmlFor="city"
+                    text="Miasto"
+                    error={errors.city ? errors.city : <div>error</div>}
+                  />
+                  <AddressFormInput
+                    isPostalCode
+                    postalCodeMask={postalCodeMask}
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                    htmlFor="postalCode"
+                    text="Kod pocztowy"
+                    error={
+                      errors.postalCode ? errors.postalCode : <div>error</div>
+                    }
+                  />
+                  <AddressFormInput
+                    htmlFor="phone"
+                    text="Numer telefonu"
+                    maxLength="9"
+                    error={errors.phone ? errors.phone : <div>error</div>}
+                  />
                 </AddressWrapper>
                 <PickUpWrapper>
                   <h2>Termin odbioru:</h2>
@@ -175,10 +176,14 @@ export const StepFour = ({ handleNextClick, handlePrevClick, setSummary }) => {
               </FormsWrapper>
             </Wrapper>
             <ButtonsWrapper>
-              <StyledButton previous type="button" onClick={handlePrevClick}>
-                Wstecz
-              </StyledButton>
-              <StyledButton type="submit">Dalej</StyledButton>
+              <Button
+                name="wstecz"
+                previous
+                type="button"
+                onClick={handlePrevClick}
+              />
+
+              <Button name="dalej" type="submit" />
             </ButtonsWrapper>
           </Form>
         )}

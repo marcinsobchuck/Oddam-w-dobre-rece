@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { Formik, Field } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
-import {
-  Form,
-  StepStatus,
-  ErrorStyled,
-  Wrapper,
-  TitleStyled,
-  LabelStyled,
-  SelectWrapper,
-} from "./StepTwo.styled";
-import { StyledButton, ButtonsWrapper } from "../Button/Button.styled";
+import { Form, StepStatus, Wrapper, TitleStyled } from "./StepTwo.styled";
+import { Select } from "../Select/Select";
+import { ButtonsWrapper } from "../ButtonsWrapper.styled";
+import { Button } from "../../../Button/Button";
 
 const validationSchema = Yup.object().shape({
   quantity: Yup.number().required("Wybierz ilość worków do oddania"),
 });
+
+const options = ["1", "2", "3", "4", "5"];
 
 export const StepTwo = ({
   handleNextClick,
@@ -23,12 +19,6 @@ export const StepTwo = ({
   setSummary,
   summary,
 }) => {
-  const [isActive, setIsActive] = useState(false);
-
-  const handleSelect = () => {
-    setIsActive((prevState) => !prevState);
-  };
-
   const handleUpdate = (v) => {
     setSummary((prevState) => ({
       ...prevState,
@@ -56,30 +46,24 @@ export const StepTwo = ({
               <TitleStyled>
                 Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:
               </TitleStyled>
-              <SelectWrapper
-                onClick={handleSelect}
-                onBlur={isActive ? handleSelect : null}
-                active={isActive}
-              >
-                <LabelStyled htmlFor="quantity">Liczba 60l worków:</LabelStyled>
-                <Field id="quantity" name="quantity" as="select">
-                  <option value="" disabled>
-                    — Wybierz —
-                  </option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </Field>
-              </SelectWrapper>
-              <ErrorStyled>{errors.quantity}</ErrorStyled>
+
+              <Select
+                text="Liczba 60l worków:"
+                name="quantity"
+                options={options}
+                error={errors.quantity}
+                isHorizontal
+              />
             </Wrapper>
             <ButtonsWrapper>
-              <StyledButton previous type="button" onClick={handlePrevClick}>
-                Wstecz
-              </StyledButton>
-              <StyledButton type="submit">Dalej</StyledButton>
+              <Button
+                name="wstecz"
+                previous
+                type="button"
+                onClick={handlePrevClick}
+              />
+
+              <Button name="dalej" type="submit" />
             </ButtonsWrapper>
           </Form>
         )}

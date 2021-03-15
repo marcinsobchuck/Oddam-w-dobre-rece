@@ -1,9 +1,8 @@
 import React from "react";
 
-import decoration from "../../assets/icons/Decoration.svg";
-import signature from "../../assets/icons/Signature.svg";
-
+import { Decoration } from "../Decoration/Decoration";
 import { AboutUsContainer, InfoBox, Image } from "./AboutUs.styled";
+import signature from "../../assets/icons/Signature.svg";
 
 export const AboutUs = () => {
   return (
@@ -11,7 +10,7 @@ export const AboutUs = () => {
       <InfoBox>
         <div>
           <h1>O nas</h1>
-          <img src={decoration} alt="decoration" />
+          <Decoration />
           <p>
             Nori grape silver beet broccoli kombu beet greens fava bean potato
             quandong celery. Bunya nuts black-eyed pea prairie turnip leek

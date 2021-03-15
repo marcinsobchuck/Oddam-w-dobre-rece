@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Text, Wrapper, InfoWrapper } from "./ThankYou.styled";
-import decoration from "../../../../assets/icons/Decoration.svg";
+import { Text, Wrapper, InfoWrapper, Info } from "./ThankYou.styled";
+import { Decoration } from "../../../Decoration/Decoration";
 import { Redirect } from "react-router-dom";
 
 export const ThankYou = () => {
-  const [redirect, setRedirect] = useState(false);
+  const [counter, setCounter] = useState(10);
 
   useEffect(() => {
-    setTimeout(() => {
-      setRedirect(true);
-    }, 10000);
-  }, []);
+    const timer = setInterval(() => setCounter(counter - 1), 1000);
+    return () => {
+      return clearInterval(timer);
+    };
+  }, [counter]);
 
-  if (redirect) {
+  if (counter === 0) {
     return <Redirect to={"/"} />;
   }
-
   return (
     <Wrapper>
       <InfoWrapper>
         <Text wide>Dziękujemy za przesłanie formularza </Text>
         <Text>Na maila prześlemy wszelkie informacje o odbiorze.</Text>
-        <img src={decoration} alt="decoration" />
-        <p>Automatyczne przekierowanie nastąpi za 10 sekund</p>
+        <Decoration />
+        <Info>Automatyczne przekierowanie nastąpi za {counter} sekund</Info>
       </InfoWrapper>
     </Wrapper>
   );

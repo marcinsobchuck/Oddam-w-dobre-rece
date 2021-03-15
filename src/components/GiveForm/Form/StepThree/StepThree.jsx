@@ -1,25 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
-
+import { Select } from "../Select/Select";
 import {
   Form,
   StepStatus,
   ErrorStyled,
   CheckboxFormWrapper,
-  CheckboxWrapper,
   OrganisationFormWrapper,
   Wrapper,
-  SelectWrapper,
-  StyledCheckbox,
   CheckboxesWrapper,
 } from "./StepThree.styled";
-import { StyledButton, ButtonsWrapper } from "../Button/Button.styled";
+import { ButtonsWrapper } from "../ButtonsWrapper.styled";
+import { Button } from "../../../Button/Button";
+import { CheckboxItem } from "./CheckboxItem";
 
 const validationSchema = Yup.object().shape({
   recipient: Yup.string().required("Wybierz komu chcesz pomóc"),
 });
+
+const options = ["Poznań", "Warszawa", "Kraków", "Wrocław", "Katowice"];
 
 export const StepThree = ({
   handleNextClick,
@@ -27,8 +28,6 @@ export const StepThree = ({
   setSummary,
   summary,
 }) => {
-  const [isActive, setIsActive] = useState(false);
-
   const handleUpdate = (v) => {
     setSummary((prevState) => ({
       ...prevState,
@@ -38,10 +37,6 @@ export const StepThree = ({
       organisation: v.organisation,
     }));
     handleNextClick();
-  };
-
-  const handleSelect = () => {
-    setIsActive((prevState) => !prevState);
   };
 
   return (
@@ -75,88 +70,22 @@ export const StepThree = ({
         {({ handleSubmit, errors }) => (
           <Form onSubmit={handleSubmit}>
             <Wrapper>
-              <SelectWrapper active={isActive}>
-                <h2>Lokalizacja:</h2>
-                <Field
-                  onClick={handleSelect}
-                  onBlur={isActive ? handleSelect : null}
-                  id="localisation"
-                  name="localisation"
-                  as="select"
-                >
-                  <option value="" disabled>
-                    — Wybierz —
-                  </option>
-                  <option value="Poznań">Poznań</option>
-                  <option value="Warszawa">Warszawa</option>
-                  <option value="Kraków">Kraków</option>
-                  <option value="Wrocław">Wrocław</option>
-                  <option value="Katowice">Katowice</option>
-                </Field>
-                <ErrorStyled>
-                  {errors.localisation ? errors.localisation : <div>error</div>}
-                </ErrorStyled>
-              </SelectWrapper>
+              <Select
+                text="Lokalizacja:"
+                name="localisation"
+                options={options}
+                error={
+                  errors.localisation ? errors.localisation : <div>error</div>
+                }
+              />
               <CheckboxFormWrapper>
                 <h2>Komu chcesz pomóc?</h2>
                 <CheckboxesWrapper>
-                  <CheckboxWrapper>
-                    <label>
-                      <Field
-                        value="dzieciom"
-                        id="kids"
-                        name="recipient"
-                        type="checkbox"
-                      />
-                      <StyledCheckbox>dzieciom</StyledCheckbox>
-                    </label>
-                  </CheckboxWrapper>
-                  <CheckboxWrapper>
-                    <label htmlFor="mothers">
-                      <Field
-                        value="samotnym matkom"
-                        id="mothers"
-                        name="recipient"
-                        type="checkbox"
-                      />
-                      <StyledCheckbox>samotnym matkom</StyledCheckbox>
-                    </label>
-                  </CheckboxWrapper>
-                  <CheckboxWrapper>
-                    <label htmlFor="homeless">
-                      <Field
-                        value="bezdomnym"
-                        id="homeless"
-                        name="recipient"
-                        type="checkbox"
-                      />
-                      <StyledCheckbox>bezdomnym</StyledCheckbox>
-                    </label>
-                  </CheckboxWrapper>
-                  <CheckboxWrapper>
-                    <label htmlFor="disabled">
-                      <Field
-                        value="niepełnosprawnym"
-                        id="disabled"
-                        name="recipient"
-                        type="checkbox"
-                      />
-                      <StyledCheckbox bottomrow>
-                        niepełnosprawnym
-                      </StyledCheckbox>
-                    </label>
-                  </CheckboxWrapper>
-                  <CheckboxWrapper>
-                    <label htmlFor="elderly">
-                      <Field
-                        value="osobom starszym"
-                        id="elderly"
-                        name="recipient"
-                        type="checkbox"
-                      />
-                      <StyledCheckbox bottomrow>osobom starszym</StyledCheckbox>
-                    </label>
-                  </CheckboxWrapper>
+                  <CheckboxItem htmlFor="kids" value="dzieciom" />
+                  <CheckboxItem hmtlFor="mothers" value="samotnym matkom" />
+                  <CheckboxItem htmlFor="homeless" value="bezdomnym" />
+                  <CheckboxItem htmlFor="disabled" value="niepełnosprawnym" />
+                  <CheckboxItem htmlFor="elderly" value="osobom starszym" />
                 </CheckboxesWrapper>
                 <ErrorStyled>
                   {errors.recipient ? errors.recipient : <div>error</div>}
@@ -170,10 +99,14 @@ export const StepThree = ({
               </OrganisationFormWrapper>
             </Wrapper>
             <ButtonsWrapper>
-              <StyledButton previous type="button" onClick={handlePrevClick}>
-                Wstecz
-              </StyledButton>
-              <StyledButton type="submit">Dalej</StyledButton>
+              <Button
+                name="wstecz"
+                previous
+                type="button"
+                onClick={handlePrevClick}
+              />
+
+              <Button name="dalej" type="submit" />
             </ButtonsWrapper>
           </Form>
         )}

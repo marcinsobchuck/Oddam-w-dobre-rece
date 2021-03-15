@@ -4,11 +4,12 @@ import {
   Title,
   StepsContainer,
   Step,
-  StepsWrapper,
+  StepsBackground,
+  Idk,
 } from "./SimpleSteps.styled";
-import { Button } from "../HomeHeader/HomeHeaderMain/HomeHeaderMain.styled";
+import { Button } from "../Button/Button";
 import { Link } from "react-router-dom";
-import decoration from "../../assets/icons/Decoration.svg";
+import { Decoration } from "../Decoration/Decoration";
 import icon1 from "../../assets/icons/Icon-1.svg";
 import icon2 from "../../assets/icons/Icon-2.svg";
 import icon3 from "../../assets/icons/Icon-3.svg";
@@ -17,11 +18,9 @@ import icon4 from "../../assets/icons/Icon-4.svg";
 export const SimpleSteps = () => {
   return (
     <SimpleStepsContainer id="simple_Steps">
-      <Title>
-        <h1>Wystarczą 4 proste kroki</h1>
-        <img src={decoration} alt="decoration" />
-      </Title>
-      <StepsWrapper>
+      <Title>Wystarczą 4 proste kroki</Title>
+      <Decoration />
+      <StepsBackground>
         <StepsContainer>
           <Step>
             <img src={icon1} alt="t-shirt" />
@@ -44,10 +43,12 @@ export const SimpleSteps = () => {
             <p>kurier przyjedzie w dogodnym terminie</p>
           </Step>
         </StepsContainer>
-      </StepsWrapper>
-      <Link to="/oddaj-rzeczy">
-        <Button>ODDAJ RZECZY</Button>
-      </Link>
+      </StepsBackground>
+      <Idk>
+        <Link to="/oddaj-rzeczy">
+          <Button name="Oddaj rzeczy" headerBtn />
+        </Link>
+      </Idk>
     </SimpleStepsContainer>
   );
 };

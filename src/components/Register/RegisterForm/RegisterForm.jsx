@@ -10,7 +10,7 @@ import {
   Button,
   FormWrap,
 } from "./RegisterForm.styled";
-import { Input } from "../../Contact/ContactForm/ContactForm.styled";
+import { StyledInput } from "../../Contact/ContactForm/ContactForm.styled";
 import { AuthContext } from "../../../context";
 
 const validationSchema = Yup.object().shape({
@@ -53,7 +53,7 @@ export const RegisterForm = () => {
               <FormWrap>
                 <InputBox marginBot>
                   <label htmlFor="email">Email</label>
-                  <Input
+                  <StyledInput
                     type="email"
                     name="email"
                     id="email"
@@ -66,7 +66,7 @@ export const RegisterForm = () => {
                 </InputBox>
                 <InputBox>
                   <label htmlFor="password">Hasło</label>
-                  <Input
+                  <StyledInput
                     type="password"
                     name="password"
                     id="password"
@@ -79,7 +79,7 @@ export const RegisterForm = () => {
                 </InputBox>
                 <InputBox>
                   <label htmlFor="passwordConfirmation">Powtórz hasło</label>
-                  <Input
+                  <StyledInput
                     type="password"
                     name="passwordConfirmation"
                     id="passwordConfirmation"

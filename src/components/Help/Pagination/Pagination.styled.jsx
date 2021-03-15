@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 
 export const PagesList = styled.ul`
   display: flex;
-  margin-top: 30px;
 `;
 
 export const Page = styled.li`

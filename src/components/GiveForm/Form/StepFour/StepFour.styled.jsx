@@ -7,6 +7,38 @@ export const Form = styled.form`
   justify-content: space-between;
   flex-grow: 1;
   height: 60vh;
+
+  .react-datepicker-wrapper {
+    flex-grow: 1;
+
+    .react-datepicker__input-container {
+      display: flex;
+
+      .react-datepicker__close-icon::after {
+        background-color: ${({ theme }) => theme.colors.loginBorder};
+        color: black;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 600;
+        content: "\f00d";
+      }
+    }
+  }
+
+  .react-datepicker__navigation {
+    outline: none;
+  }
+
+  .react-datepicker__month {
+    background-color: ${({ theme }) => theme.colors.loginBorder};
+    margin: 0;
+    .react-datepicker__day {
+      outline: none;
+    }
+  }
+
+  .react-datepicker__time-list {
+    background-color: ${({ theme }) => theme.colors.loginBorder};
+  }
 `;
 
 export const StepStatus = styled.p`
@@ -51,7 +83,6 @@ export const Row = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -85,38 +116,6 @@ export const InputWrapper = styled.div`
     padding: 4px 10px;
     font-size: 14px;
     color: ${({ theme }) => theme.colors.fontColor};
-  }
-
-  .react-datepicker-wrapper {
-    flex-grow: 1;
-
-    .react-datepicker__input-container {
-      display: flex;
-
-      .react-datepicker__close-icon::after {
-        background-color: ${({ theme }) => theme.colors.loginBorder};
-        color: black;
-        font-family: "Font Awesome 5 Free";
-        font-weight: 600;
-        content: "\f00d";
-      }
-    }
-  }
-
-  .react-datepicker__navigation {
-    outline: none;
-  }
-
-  .react-datepicker__month {
-    background-color: ${({ theme }) => theme.colors.loginBorder};
-    margin: 0;
-    .react-datepicker__day {
-      outline: none;
-    }
-  }
-
-  .react-datepicker__time-list {
-    background-color: ${({ theme }) => theme.colors.loginBorder};
   }
 `;
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Title } from "../styled/Description.styled";
-import { List, ListItemsWrap, Row, ListItem } from "../styled/List.styled";
+import { List } from "../List/List";
 import { Pagination } from "../Pagination/Pagination";
 import data from "../../../data/data.json";
 
@@ -12,26 +11,13 @@ export const HelpFoundations = () => {
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-  const paginate = (pageNumber, event) => {
+  const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   return (
     <>
-      <Title>{data.foundations.desc}</Title>
-      <List>
-        {currentPosts.map((el) => {
-          return (
-            <Row key={el.id}>
-              <ListItemsWrap>
-                <ListItem rowTitle>{el.name}</ListItem>
-                <ListItem>{el.orgDesc}</ListItem>
-              </ListItemsWrap>
-              <ListItem centered>{el.things}</ListItem>
-            </Row>
-          );
-        })}
-      </List>
+      <List currentPosts={currentPosts} description={data.foundations.desc} />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}

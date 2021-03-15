@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { FormWrapper, StepsContainer } from "./Form.styled";
 import { ThankYou } from "./ThankYou/ThankYou";
 import { Summary } from "./Summary/Summary";
@@ -10,7 +10,6 @@ import { StepFour } from "./StepFour/StepFour";
 import { AuthContext } from "../../../context";
 
 export const Form = () => {
-  // const [activeStep, setActiveStep] = useState(stepsCounter);
   const { activeStep, setActiveStep } = useContext(AuthContext);
 
   let stepsCounter = activeStep;
@@ -43,11 +42,6 @@ export const Form = () => {
     stepsCounter--;
     setActiveStep(stepsCounter);
   };
-
-  useEffect(() => {
-    console.log(summary);
-    console.log(activeStep);
-  }, [activeStep, summary]);
 
   const renderImportant = () => {
     switch (activeStep) {
@@ -103,6 +97,7 @@ export const Form = () => {
       case 4:
         return (
           <StepFour
+            summary={summary}
             setSummary={setSummary}
             handleNextClick={handleNextClick}
             handlePrevClick={handlePrevClick}

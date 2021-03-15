@@ -4,11 +4,23 @@ import { HomeHeaderNavigation } from "../HomeHeader/HomeHeaderNavigation/HomeHea
 import { Contact } from "../Contact/Contact";
 import hero from "../../assets/images/Form-Hero-Image.jpg";
 
-import { Wrapper, HeaderSection, HeaderWrapper, Hero } from "./GiveForm.styled";
+import {
+  Wrapper,
+  HeaderSection,
+  HeaderWrapper,
+  Hero,
+  Arrow,
+} from "./GiveForm.styled";
 import { GiveFormMain } from "./GiveFormMain/GiveFormMain";
 import { Form } from "./Form/Form";
 
 export const GiveForm = () => {
+  const handleScrollToForm = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <Wrapper>
@@ -19,6 +31,7 @@ export const GiveForm = () => {
             <GiveFormMain />
           </HeaderSection>
         </HeaderWrapper>
+        <Arrow onClick={handleScrollToForm} />
       </Wrapper>
       <Form />
       <Contact />

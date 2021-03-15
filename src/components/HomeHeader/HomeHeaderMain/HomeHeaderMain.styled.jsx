@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -9,9 +9,10 @@ export const MainContainer = styled.div`
   max-width: 674px;
   width: 100%;
   align-self: flex-start;
-  margin-left: 40px;
-  img {
-    margin-top: 25px;
+
+  @media (max-width: ${({ theme }) => theme.screens.laptop}) {
+    margin-top: 60px;
+    align-self: center;
   }
 `;
 
@@ -21,56 +22,20 @@ export const Title = styled.h1`
   text-align: center;
   letter-spacing: -0.76px;
   font-weight: 400;
+  :nth-of-type(2) {
+    margin-bottom: 25px;
+  }
 `;
 
-export const ButtonsWrap = styled.div`
+export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
+  align-self: center;
+  margin-top: 60px;
   width: 100%;
-  margin-top: 65px;
-`;
 
-export const Button = styled.button`
-  font-size: 38px;
-  font-weight: 300;
-  max-width: 310px;
-  background-color: transparent;
-  padding: 10px 30px;
-  line-height: 45px;
-  border: 0.75px solid ${({ theme }) => theme.colors.fontColor};
-  font-family: ${({ theme }) => theme.fonts.fontBase}, sans-serif;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.fontColor};
-  outline: none;
-  transition: 0.2s;
-  cursor: pointer;
-  :hover {
-    border: 0.75px solid ${({ theme }) => theme.colors.loginBorder};
+  @media (max-width: ${({ theme }) => theme.screens.laptop}) {
+    margin-bottom: 60px;
   }
-
-  ${({ helpBtn }) =>
-    helpBtn &&
-    css`
-      font-size: 24px;
-      font-weight: 400;
-      border: 0.75px solid transparent;
-      text-transform: none;
-      line-height: 24px;
-      padding: 10px 30px;
-
-      text-align: center;
-      :hover {
-        border: 0.75px solid ${({ theme }) => theme.colors.loginBorder};
-      }
-    `}
-  ${({ center }) =>
-    center &&
-    css`
-      margin: 0 60px;
-    `}
-  ${({ active }) =>
-    active &&
-    css`
-      border: 0.75px solid ${({ theme }) => theme.colors.fontColor};
-    `}
 `;

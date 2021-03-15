@@ -10,11 +10,13 @@ import {
   InfoBox,
   AddressPickupWrapper,
   SummaryWrapper,
-  AddressPickupBox,
-  AddressPickupRow,
+  SummaryBox,
 } from "./Summary.styled";
-import { StyledButton, ButtonsWrapper } from "../Button/Button.styled";
+import Moment from "moment";
+import { ButtonsWrapper } from "../ButtonsWrapper.styled";
+import { Button } from "../../../Button/Button";
 import { AuthContext } from "../../../../context";
+import { SummaryRow } from "./SummaryRow";
 
 export const Summary = ({ summary, setSummary, handlePrevClick }) => {
   let { quantity, item, recipient, address, localisation, pickup } = summary;
@@ -73,51 +75,35 @@ export const Summary = ({ summary, setSummary, handlePrevClick }) => {
           </InfoBox>
         </InfoWrapper>
         <AddressPickupWrapper>
-          <AddressPickupBox address>
+          <SummaryBox address>
             <BoxTitle>Adres odbioru:</BoxTitle>
-            <AddressPickupRow>
-              <div>Ulica</div>
-              <div>{address.street}</div>
-            </AddressPickupRow>
-            <AddressPickupRow>
-              <div>Miasto</div>
-              <div>{address.city}</div>
-            </AddressPickupRow>
-            <AddressPickupRow>
-              <div>Kod pocztowy</div>
-              <div>{address.postalCode}</div>
-            </AddressPickupRow>
-            <AddressPickupRow>
-              <div>Numer telefonu</div>
-              <div>{address.phone}</div>
-            </AddressPickupRow>
-          </AddressPickupBox>
-          <AddressPickupBox>
+            <SummaryRow name="Ulica" info={address.street} />
+            <SummaryRow name="Miasto" info={address.city} />
+            <SummaryRow name="Kod pocztowy" info={address.postalCode} />
+            <SummaryRow name="Numer telefonu" info={address.phone} />
+          </SummaryBox>
+          <SummaryBox>
             <BoxTitle>Termin odbioru:</BoxTitle>
-            <AddressPickupRow>
-              <div>Data</div>
-              <div>{pickup.date}</div>
-            </AddressPickupRow>
-            <AddressPickupRow>
-              <div>Godzina</div>
-              <div>{pickup.hour}</div>
-            </AddressPickupRow>
-            <AddressPickupRow>
-              <div>Uwagi dla kuriera</div>
-              <div>
-                <div>{pickup.comments}</div>
-              </div>
-            </AddressPickupRow>
-          </AddressPickupBox>
+            <SummaryRow
+              name="Data"
+              info={Moment(pickup.date).format("DD-MM-YYYY")}
+            />
+            <SummaryRow
+              name="Godzina"
+              info={Moment(pickup.hour).format("HH:mm")}
+            />
+            <SummaryRow name="Uwagi dla kuriera" info={pickup.comments} />
+          </SummaryBox>
         </AddressPickupWrapper>
       </SummaryWrapper>
       <ButtonsWrapper>
-        <StyledButton previous type="button" onClick={handlePrevClick}>
-          Wstecz
-        </StyledButton>
-        <StyledButton type="button" onClick={handleNextClick}>
-          Potwierdzam
-        </StyledButton>
+        <Button
+          name="wstecz"
+          previous
+          type="button"
+          onClick={handlePrevClick}
+        />
+        <Button name="dalej" type="button" onClick={handleNextClick} />
       </ButtonsWrapper>
     </Wrapper>
   );

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import background from "../../assets/images/Background-Contact-Form.jpg";
 
+export const Wrapper = styled.section`
+  position: relative;
+`;
+
 export const Background = styled.div`
   height: 100vh;
   width: 100%;
@@ -28,18 +32,15 @@ export const FormContainer = styled.div`
   top: 15%;
   z-index: 55;
   max-width: 550px;
+`;
 
-  h1 {
-    font-size: 38px;
-    color: ${({ theme }) => theme.colors.fontColor};
-    font-weight: 400;
-    letter-spacing: -0.76px;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  img {
-    margin-bottom: 70px;
-  }
+export const Title = styled.h1`
+  font-size: 38px;
+  color: ${({ theme }) => theme.colors.fontColor};
+  font-weight: 400;
+  letter-spacing: -0.76px;
+  text-align: center;
+  margin-bottom: 30px;
 `;
 
 export const Footer = styled.footer`
@@ -50,17 +51,17 @@ export const Footer = styled.footer`
   width: 100%;
   justify-content: flex-end;
   align-items: center;
+`;
 
-  p {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+export const Copyright = styled.p`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+`;
 
-  div {
-    padding-right: 8%;
-    img:nth-of-type(1) {
-      margin-right: 12px;
-    }
+export const IconsWrapper = styled.div`
+  padding-right: 8%;
+  img:nth-of-type(1) {
+    margin-right: 12px;
   }
 `;

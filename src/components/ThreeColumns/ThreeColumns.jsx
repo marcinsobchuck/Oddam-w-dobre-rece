@@ -1,10 +1,10 @@
 import React from "react";
-import { ColumnsContainer, Column } from "./ThreeColumns.styled";
+import { ColumnsContainer, Column, Wrapper } from "./ThreeColumns.styled";
 
 export const ThreeColumns = () => {
   return (
     <ColumnsContainer>
-      <section>
+      <Wrapper>
         <Column>
           <h1>10</h1>
           <h2>ODDANYCH WORKÓW</h2>
@@ -29,7 +29,7 @@ export const ThreeColumns = () => {
             enim a elit viverra elementuma. Aliquam erat volutpat.
           </p>
         </Column>
-      </section>
+      </Wrapper>
     </ColumnsContainer>
   );
 };

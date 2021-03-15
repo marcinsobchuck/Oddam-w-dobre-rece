@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import people from "../../assets/images/People.jpg";
 
-export const AboutUsContainer = styled.div`
+export const AboutUsContainer = styled.section`
   display: flex;
   width: 100%;
   height: 100vh;
-  margin-top: 80px;
+  margin-top: 60px;
 `;
 
 export const InfoBox = styled.div`
